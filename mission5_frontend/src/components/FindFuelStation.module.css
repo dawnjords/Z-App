@@ -1,0 +1,105 @@
+/* Page container */
+.container {
+  padding: 24px 16px 40px;
+  background: #fff;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 24px;
+}
+
+.listCol {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* card */
+.card {
+  position: relative;
+  border-radius: 16px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #ff8a00, #ffb347);
+  color: #fff;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+.cardHead {
+  margin-bottom: 8px;
+}
+.cardTitle {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+.cardAddr {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+/* features row */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 8px 0 10px;
+}
+.featureIcon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.25));
+}
+
+/* hours block */
+.hoursWrap {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  row-gap: 2px;
+  column-gap: 8px;
+  font-size: 11px;
+}
+.hourRow { display: contents; }
+.day { width: 22px; display: inline-block; opacity: 0.95; }
+
+/* phone row */
+.contact {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.hero {
+  margin: 8px 0 20px;
+  border-radius: 8px;
+  padding: 32px 20px;
+  background: linear-gradient(90deg, #f7941d, #ffb347);
+}
+
+.heroTitle {
+  margin: 0;
+  color: #fff;
+  font-size: clamp(28px, 3.4vw, 44px);
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.smallIcon { width: 14px; height: 14px; }
+
+/* map placeholder */
+.mapCol { min-height: 420px; }
+.mapBox {
+  height: 100%;
+  min-height: 420px;
+  background: #f2f2f2;
+  border-radius: 16px;
+  border: 1px solid #e6e6e6;
+}
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: 1fr; }
+}
