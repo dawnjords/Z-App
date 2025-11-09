@@ -19,27 +19,42 @@
 /* card */
 .card {
   position: relative;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 14px 16px;
   background: linear-gradient(135deg, #ff8a00, #ffb347);
-  color: #fff;
+  color:black;
   box-shadow: 0 8px 18px rgba(0,0,0,0.18);
 }
+/* Two-column grid INSIDE the card */
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr auto; /* left info + slim hours */
+  gap: 16px;
+  align-items: start;
+}
+.leftCol { min-width: 0; }
+.cardTitle { margin: 0; font-size: 18px; font-weight: 800; }
+.cardAddr { font-size: 12px; opacity: 0.9; margin-top: 2px; }
+
 
 .cardHead {
   margin-bottom: 8px;
+  padding-right: 320px;
+  color:white
+ 
 }
-.cardTitle {
+/* .cardTitle {
   margin: 0;
   font-size: 16px;
   font-weight: 700;
-}
-.cardAddr {
+
+} */
+/* .cardAddr {
   font-size: 12px;
   opacity: 0.9;
-}
+} */
 
-/* features row */
+features row
 .features {
   display: flex;
   align-items: center;
@@ -47,33 +62,56 @@
   margin: 8px 0 10px;
 }
 .featureIcon {
-  width: 18px;
-  height: 18px;
-  object-fit: contain;
-  filter: drop-shadow(0 1px 0 rgba(0,0,0,0.25));
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    filter: drop-shadow(0 1px 0 rgba(0,0,0,0.25));
+   
 }
 
 /* hours block */
 .hoursWrap {
+  position: absolute;
+  top: 40px;
+  right: 14px;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 18px auto;
   row-gap: 2px;
-  column-gap: 8px;
-  font-size: 11px;
+  column-gap: 6px;
+  font-size: 10.5px;
+  line-height: 1.2;
+  text-align: left;
+  color: black;
 }
 .hourRow { display: contents; }
-.day { width: 22px; display: inline-block; opacity: 0.95; }
+.day { text-align: right; opacity: 0.95; }
+.time { white-space: nowrap; }
 
-/* phone row */
+/* Contact row */
 .contact {
-  margin-top: 10px;
+  margin-top: 6px;
+ color: #fff;
+  margin-right:390px ;
   padding-top: 10px;
-  border-top: 1px solid rgba(255,255,255,0.25);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
+  /* border-top: 1px solid rgba(255,255,255,0.25); */
 }
+.contactLabel {
+  display: block;
+  font-size: 12px;
+  margin-bottom: 6px;
+  opacity: 0.95;
+  font-size: 18px;
+  color: #fff;
+}
+/* phone */
+.phoneRow {
+    display:flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    opacity: 0.95;
+}
+
 .hero {
   margin: 8px 0 20px;
   border-radius: 8px;
@@ -89,6 +127,26 @@
   letter-spacing: .2px;
 }
 
+/* search bar */
+.searchBar {
+  width: 320px;
+  background: #fff;
+  border-radius: 999px;
+  box-shadow: 0 8px 18px rgba(0,0,0,.12);
+  display: flex;
+  align-items: center;
+  padding: 10px 14px;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.searchBar input {
+  outline: none;
+  border: 0;
+  width: 100%;
+  font-size: 14px;
+}
+.searchIcon { width: 18px; height: 18px; fill: #666; }
+
 .smallIcon { width: 14px; height: 14px; }
 
 /* map placeholder */
@@ -102,4 +160,5 @@
 }
 @media (max-width: 1024px) {
   .grid { grid-template-columns: 1fr; }
+  .searchBar { width: 100%; max-width: 520px; }
 }

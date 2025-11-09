@@ -1,17 +1,17 @@
 import React from "react";
 import styles from "./FindFuelStation.module.css";
 
-
 const ICONS = {
   car: "/image/icons/zicons/car.png",
   toilet: "/image/icons/zicons/toilet.png",
   gas: "/image/icons/zicons/Gas.png",
-  EV2: "/image/icons/zicons/EV2.png",   // or ev.png if you chose that
+  EV2: "/image/icons/zicons/EV2.png",
   carwash: "/image/icons/zicons/carWash.png",
-   bottom: "/image/icons/zicons/bottom.png",
   coffeecup: "/image/icons/zicons/coffee.png",
   atm: "/image/icons/zicons/atm.png",
- 
+  phone: "/image/icons/zicons/phone.png",
+  search: "/image/icons/zicons/search.png",
+
 };
 
 const STATIONS = [
@@ -29,9 +29,19 @@ const STATIONS = [
     address: "26 Clevedon Road, Papakura",
     phone: "09 2988185",
     hours: { Sun:"24 Hours", Mon:"24 Hours", Tue:"24 Hours", Wed:"24 Hours", Thu:"24 Hours", Fri:"24 Hours", Sat:"24 Hours" },
-    features: ["toilet", "gas","coffeecup","atm"],
+    features: ["toilet", "gas", "coffeecup", "atm"],
   },
 ];
+
+
+function SearchBar() {
+  return (
+    <div className={styles.searchBar}>
+     
+      <input placeholder="Enter Your Location" />
+    </div>
+  );
+}
 
 function FeatureIcons({ features }) {
   return (
@@ -47,24 +57,34 @@ function StationCard({ s }) {
   return (
     <article className={styles.card}>
       <header className={styles.cardHead}>
-        <h3 className={styles.cardTitle}>{s.name}</h3>
-        <div className={styles.cardAddr}>{s.address}</div>
+        <div className={styles.cardGrid}>
+          <div className={styles.leftCol}>
+            <h3 className={styles.cardTitle}>{s.name}</h3>
+            <div className={styles.cardAddr}>{s.address}</div>
+          </div>
+        </div>
       </header>
 
-      <FeatureIcons features={s.features} />
+      {/* icons on cards */}
+        <FeatureIcons features={s.features} />
 
+      {/* compact hours block – sits top-right */}
       <div className={styles.hoursWrap}>
         {Object.entries(s.hours).map(([day, h]) => (
           <div key={day} className={styles.hourRow}>
             <span className={styles.day}>{day}</span>
-            <span>{h}</span>
+            <span className={styles.time}>{h}</span>
           </div>
         ))}
       </div>
 
+
       <div className={styles.contact}>
-        <img src={ICONS.edit} className={styles.smallIcon} alt="" />
-        <span>{s.phone}</span>
+        <span className ={styles.contactLabel}>Contact Store</span>
+        <div className={styles.phoneRow}>
+          <img src={ICONS.phone} className={styles.smallIcon} alt="" />
+          <span>{s.phone}</span>
+        </div>
       </div>
     </article>
   );
@@ -75,19 +95,8 @@ export default function FindFuelStation() {
     <main className={styles.container}>
       <section className={styles.hero}>
         <h1 className={styles.heroTitle}>Find a Fuel Station</h1>
-        </section>
-     
-      <div className={styles.iconRow}>
-        <img src={ICONS.car} alt="Car" className={styles.icon} />
-        <img src={ICONS.toilet} alt="Toilet" className={styles.icon} />
-        <img src={ICONS.gas} alt="Gas" className={styles.icon} />
-        <img src={ICONS.EV2} alt="EV2" className={styles.icon} />
-        <img src={ICONS.carwash} alt="Car Wash" className={styles.icon} />
-        <img src={ICONS.coffee} alt="Coffee Cup" className={styles.icon} />
-        <img src={ICONS.bottom} alt="Bottom Menu" className={styles.icon} />
-        <img src={ICONS.atm} alt="ATM" className={styles.icon} />
-       
-      </div>
+      </section>
+      <SearchBar />
 
       <div className={styles.grid}>
         <section className={styles.listCol}>
