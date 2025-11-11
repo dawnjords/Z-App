@@ -1,5 +1,27 @@
+
+import { useMemo, useEffect } from "react";
+
 import React from "react";
 import styles from "./FindFuelStation.module.css";
+
+// leaflet
+import {MapContainer, TileLayer, Marker, Popup, useMap} from "react-leaflet";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
+
+// default marker
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+L.Marker.prototype.options.icon = L.icon({
+  iconUrl: markerIcon,
+  iconRetinaUrl: markerIcon2x,
+  shadowUrl: markerShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
 
 const ICONS = {
   car: "/image/icons/zicons/car.png",
@@ -10,7 +32,7 @@ const ICONS = {
   coffeecup: "/image/icons/zicons/coffee.png",
   atm: "/image/icons/zicons/atm.png",
   phone: "/image/icons/zicons/phone.png",
-  search: "/image/icons/zicons/search.png",
+  Search: "/image/icons/zicons/search.png",
 
 };
 
@@ -22,6 +44,7 @@ const STATIONS = [
     phone: "09 2988185",
     hours: { Sun:"24 Hours", Mon:"24 Hours", Tue:"24 Hours", Wed:"24 Hours", Thu:"24 Hours", Fri:"24 Hours", Sat:"24 Hours" },
     features: ["toilet", "gas", "coffeecup", "atm"],
+    lat:-37.0625, lng:174.9445,
   },
   {
     id: 2,
@@ -30,6 +53,7 @@ const STATIONS = [
     phone: "09 2988185",
     hours: { Sun:"24 Hours", Mon:"24 Hours", Tue:"24 Hours", Wed:"24 Hours", Thu:"24 Hours", Fri:"24 Hours", Sat:"24 Hours" },
     features: ["toilet", "gas", "coffeecup", "atm"],
+    lat:-37.056, lng:174.94,
   },
 ];
 
@@ -53,20 +77,72 @@ function FeatureIcons({ features }) {
   );
 }
 
+/* Fit map to markers */
+function FitToMarkers({ stations }) {
+  const map = useMap();
+
+  const bounds = useMemo(() => {
+    const b = L.latLngBounds([]);
+    stations.forEach(s => b.extend([s.lat, s.lng]));
+    return b;
+  }, [stations]);
+
+  useEffect(() => {
+    if (!stations.length) return;
+    map.fitBounds(bounds, { padding: [40, 40] });
+  }, [map, bounds, stations.length]);
+
+  return null;
+}
+
+
+
+function StationMap({ stations }) {
+  const center = stations.length ? [stations[0].lat, stations[0].lng] : [-36.85, 174.76];
+
+  return (
+    <MapContainer
+      center={center}
+      zoom={13}
+      style={{ height: "480px", width: "100%", borderRadius: "16px" }}  // ⬅️ force size
+      scrollWheelZoom
+      className={styles.mapBox} // keep this too; we’ll move back to CSS after it works
+    >
+      <TileLayer
+        attribution='&copy; OpenStreetMap contributors'
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+      />
+      <FitToMarkers stations={stations} />
+      {stations.map(s => (
+        <Marker key={s.id} position={[s.lat, s.lng]}>
+          <Popup>
+            <strong>{s.name}</strong><br />
+            {s.address}<br />
+            {s.phone}
+          </Popup>
+        </Marker>
+      ))}
+    </MapContainer>
+  );
+}
+
+
 function StationCard({ s }) {
   return (
     <article className={styles.card}>
       <header className={styles.cardHead}>
         <div className={styles.cardGrid}>
+
           <div className={styles.leftCol}>
             <h3 className={styles.cardTitle}>{s.name}</h3>
             <div className={styles.cardAddr}>{s.address}</div>
+      {/* icons on cards */}
+        <FeatureIcons features={s.features} />
+
           </div>
         </div>
       </header>
 
-      {/* icons on cards */}
-        <FeatureIcons features={s.features} />
 
       {/* compact hours block – sits top-right */}
       <div className={styles.hoursWrap}>
@@ -91,6 +167,10 @@ function StationCard({ s }) {
 }
 
 export default function FindFuelStation() {
+
+  
+
+ 
   return (
     <main className={styles.container}>
       <section className={styles.hero}>
@@ -104,10 +184,10 @@ export default function FindFuelStation() {
             <StationCard key={s.id} s={s} />
           ))}
         </section>
-
-        <section className={styles.mapCol}>
-          <div className={styles.mapBox}>Map goes here</div>
-        </section>
+<section className ={styles.mapCol}>
+  <StationMap stations={STATIONS} />
+</section>
+        
       </div>
     </main>
   );

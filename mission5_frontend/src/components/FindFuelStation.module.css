@@ -58,9 +58,10 @@ features row
 .features {
   display: flex;
   align-items: center;
+  gap: 30px;
+  margin: 100px 0 10px;
   justify-content: flex-start;
-  gap: 10px;
-  margin: 8px 0 10px;
+
 }
 .featureIcon {
     width: 18px;
@@ -157,6 +158,7 @@ features row
   min-height: 420px;
   background: #f2f2f2;
   border-radius: 16px;
+  overflow: hidden;
   border: 1px solid #e6e6e6;
 }
 @media (max-width: 1024px) {
