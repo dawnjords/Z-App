@@ -1,165 +1,179 @@
-/* Base layout */
-.container {
+.pageWrapper {
   font-family: "Inter", sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #fff;
+  background: white;
+  overflow-x: hidden;
 }
 
-.header {
+/* --- Top Banner --- */
+.topBanner img {
   width: 100%;
-  text-align: center;
-  color: #333;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-top: 1.5rem;
+  display: block;
 }
 
-/* Hero Section */
-.hero {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* --- Hero Section --- */
+.heroSection {
   background: linear-gradient(90deg, #ffb300, #ff6f00);
-  border-radius: 8px;
-  padding: 2rem;
-  color: white;
-  width: 90%;
-  margin: 2rem 0;
-}
-
-.heroLeft h2 {
-  font-size: 1.8rem;
-  font-weight: 700;
-}
-
-.heroRight img {
-  width: 320px;
-  border-radius: 8px;
-}
-
-/* Comparison Section */
-.comparison {
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 4rem;
-}
-
-.comparison h3 {
-  color: #333;
-  font-size: 1.5rem;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-/* Search Input + Button */
-.searchRow {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  width: 100%;
-  max-width: 600px;
-  margin: 1.5rem 0;
+  padding: 2rem 0;
 }
 
-.searchRow input {
-  flex: 1;
-  padding: 0.8rem 1rem;
+.heroImage {
+  width: 80%;
+  max-width: 1000px;
   border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* --- White Section (Search + Results) --- */
+.whiteSection {
+  background: #fff;
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* --- Search Input Groups --- */
+.searchGroup {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.searchGroup input {
+  width: 300px;
+  padding: 0.8rem;
   border: 1px solid #ccc;
+  border-radius: 6px;
   font-size: 1rem;
+  transition: all 0.2s ease;
 }
 
-.searchRow button {
-  background-color: #4b2e83;
-  color: white;
+.searchGroup input:focus {
+  outline: none;
+  border-color: #ff6f00;
+  box-shadow: 0 0 5px rgba(255, 111, 0, 0.3);
+}
+
+.searchGroup button {
+  background: #4b2e83;
+  color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.8rem 1.5rem;
+  border-radius: 6px;
+  padding: 0.8rem 1.4rem;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.searchRow button:hover {
-  background-color: #3a2367;
+.searchGroup button:hover {
+  background: #3a2264;
+  transform: translateY(-2px);
 }
 
-/* Results Section */
-.loading {
-  color: #555;
-  font-style: italic;
-}
-
+/* --- Cards Grid --- */
 .cardGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 1.5rem;
-  width: 100%;
-  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  margin-bottom: 3rem;
 }
 
-/* Price Cards */
-.card {
+/* --- Station Block (Title + Fuel Cards) --- */
+.stationBlock {
   text-align: center;
-  color: white;
-  border-radius: 12px;
-  padding: 1.2rem;
-  font-weight: 500;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 
-.card img {
-  width: 60px;
-  margin-bottom: 0.5rem;
-}
-
-.card h4 {
-  font-size: 1.1rem;
-  margin: 0.3rem 0;
-}
-
-.card p {
-  font-size: 0.95rem;
-  margin-bottom: 0.3rem;
-}
-
-.card h5 {
-  font-size: 1.1rem;
+.stationName {
+  font-size: 1.2rem;
   font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
 }
 
-/* Gradient backgrounds based on price */
-.green {
-  background: linear-gradient(180deg, #43a047, #2e7d32);
+/* --- Fuel Cards Layout --- */
+.stationGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
-.orange {
-  background: linear-gradient(180deg, #fb8c00, #ef6c00);
+/* --- Fuel Card Design --- */
+.fuelCard {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffa726, #ffcc80);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.yellow {
-  background: linear-gradient(180deg, #fdd835, #fbc02d);
+.fuelCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
 }
 
-/* Responsive */
+/* --- Fuel Card Inner Content --- */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.4rem;
+}
+
+.cardHeader img {
+  width: 26px;
+  height: 26px;
+}
+
+.cardHeader span {
+  font-weight: 700;
+  color: #fff;
+}
+
+.price {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* --- Responsive Adjustments --- */
 @media (max-width: 768px) {
-  .hero {
-    flex-direction: column;
-    text-align: center;
+  .heroImage {
+    width: 95%;
   }
 
-  .heroRight img {
-    width: 220px;
-    margin-top: 1rem;
+  .searchGroup {
+    flex-direction: column;
+    align-items: center;
   }
 
-  .searchRow {
+  .stationGroup {
     flex-direction: column;
-    width: 100%;
+    align-items: center;
+  }
+
+  .fuelCard {
+    width: 140px;
+    height: 140px;
+  }
+
+  .stationName {
+    font-size: 1.1rem;
   }
 }

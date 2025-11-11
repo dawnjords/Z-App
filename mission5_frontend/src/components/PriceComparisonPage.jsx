@@ -1,128 +1,153 @@
 import React, { useState } from "react";
 import styles from "./PriceComparisonPage.module.css";
 
-export default function PriceComparisonPage() {
-  const [address, setAddress] = useState("");
-  const [results, setResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+import bannerTop from "../assets/banner/2.png";
+import bannerHero from "../assets/banner/3.png";
+import zLogo from "../assets/banner/4.png";
 
-  // Approximate Z station coordinates + mock prices
+const PriceComparisonPage = () => {
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
+  const [results1, setResults1] = useState([]);
+  const [results2, setResults2] = useState([]);
+
+  // --- Mock Station Data ---
   const stations = [
-    { id: 1, name: "Z Albany", lat: -36.726, lon: 174.707, price: 2.87 },
-    { id: 2, name: "Z New Lynn", lat: -36.907, lon: 174.683, price: 2.93 },
-    { id: 3, name: "Z Sylvia Park", lat: -36.918, lon: 174.838, price: 2.98 },
-    { id: 4, name: "Z Henderson", lat: -36.87, lon: 174.628, price: 3.07 },
-    { id: 5, name: "Z Westgate", lat: -36.802, lon: 174.62, price: 2.01 },
-    { id: 6, name: "Z Ponsonby", lat: -36.85, lon: 174.742, price: 2.95 },
+    {
+      name: "Z Albany",
+      area: "north shore",
+      prices: { "Z 91": 3.0, "Z X95": 3.2, "Z D": 2.3 },
+    },
+    {
+      name: "Z Henderson",
+      area: "west auckland",
+      prices: { "Z 91": 2.6, "Z X95": 2.8, "Z D": 2.0 },
+    },
+    {
+      name: "Z Sylvia Park",
+      area: "east auckland",
+      prices: { "Z 91": 3.1, "Z X95": 3.3, "Z D": 2.2 },
+    },
+    {
+      name: "Z Manukau",
+      area: "south auckland",
+      prices: { "Z 91": 2.9, "Z X95": 3.1, "Z D": 2.1 },
+    },
+    {
+      name: "Z Browns Bay",
+      area: "milford",
+      prices: { "Z 91": 3.05, "Z X95": 3.25, "Z D": 2.4 },
+    },
   ];
 
-  // Convert address → coordinates using OpenStreetMap
-  const getCoordinatesFromAddress = async (address) => {
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(
-        address
-      )}`
+  // --- Search Function ---
+  const findStations = (input) => {
+    const searchTerm = input.trim().toLowerCase();
+    if (!searchTerm) return [];
+    return stations.filter(
+      (station) =>
+        station.name.toLowerCase().includes(searchTerm) ||
+        station.area.toLowerCase().includes(searchTerm)
     );
-    const data = await res.json();
-    if (data.length > 0) {
-      return {
-        lat: parseFloat(data[0].lat),
-        lon: parseFloat(data[0].lon),
-      };
-    }
-    throw new Error("Address not found");
   };
 
-  // Haversine formula to calculate distance (km)
-  const calculateDistance = (lat1, lon1, lat2, lon2) => {
-    const R = 6371;
-    const dLat = ((lat2 - lat1) * Math.PI) / 180;
-    const dLon = ((lon2 - lon1) * Math.PI) / 180;
-    const a =
-      Math.sin(dLat / 2) ** 2 +
-      Math.cos((lat1 * Math.PI) / 180) *
-        Math.cos((lat2 * Math.PI) / 180) *
-        Math.sin(dLon / 2) ** 2;
-    return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  // --- Handlers ---
+  const handleSearch1 = () => {
+    setResults1(findStations(address1));
   };
 
-  // Main search
-  const handleSearch = async () => {
-    if (!address.trim()) return alert("Please enter an address.");
-    setLoading(true);
-    try {
-      const { lat, lon } = await getCoordinatesFromAddress(address);
-      const sorted = stations
-        .map((s) => ({
-          ...s,
-          distance: calculateDistance(lat, lon, s.lat, s.lon).toFixed(1),
-          color: s.price < 2.9 ? "green" : s.price > 3 ? "orange" : "yellow",
-        }))
-        .sort((a, b) => a.distance - b.distance);
-      setResults(sorted);
-    } catch (err) {
-      alert(err.message);
-    }
-    setLoading(false);
+  const handleSearch2 = () => {
+    setResults2(findStations(address2));
   };
 
   return (
-    <>
-      <header className={styles.header}>
-        <h1>Fuel Your Savings - Compare Prices Now!</h1>
-      </header>
+    <div className={styles.pageWrapper}>
+      {/* Top banner */}
+      <section className={styles.topBanner}>
+        <img src={bannerTop} alt="Fuel Your Savings" />
+      </section>
 
-      <main className={styles.container}>
-        {/* Hero Section */}
-        <section className={styles.hero}>
-          <div className={styles.heroLeft}>
-            <h2>Compare Prices Across Stations</h2>
-          </div>
-          <div className={styles.heroRight}>
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Gas_station_pump.jpg/800px-Gas_station_pump.jpg"
-              alt="Fuel pump"
-            />
-          </div>
-        </section>
+      {/* Hero Section */}
+      <section className={styles.heroSection}>
+        <img
+          src={bannerHero}
+          alt="Compare Prices Across Stations"
+          className={styles.heroImage}
+        />
+      </section>
 
-        {/* Search Section */}
-        <section className={styles.comparison}>
-          <h3>Compare Prices Across Stations</h3>
-          <div className={styles.searchRow}>
-            <input
-              type="text"
-              value={address}
-              onChange={(e) => setAddress(e.target.value)}
-              placeholder="Enter address or suburb"
-            />
-            <button onClick={handleSearch}>Search</button>
-          </div>
+      {/* White Section */}
+      <section className={styles.whiteSection}>
+        <h2 className={styles.sectionTitle}>Compare Prices Across Stations</h2>
 
-          {loading && (
-            <p className={styles.loading}>Searching nearby stations...</p>
-          )}
+        {/* First Search */}
+        <div className={styles.searchGroup}>
+          <input
+            type="text"
+            placeholder="Enter address"
+            value={address1}
+            onChange={(e) => setAddress1(e.target.value)}
+          />
+          <button onClick={handleSearch1}>Search</button>
+        </div>
 
-          {results.length > 0 && (
-            <div className={styles.cardGrid}>
-              {results.map((card) => (
-                <div
-                  key={card.id}
-                  className={`${styles.card} ${styles[card.color]}`}
-                >
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Z_Energy_logo.svg/1200px-Z_Energy_logo.svg.png"
-                    alt="Z logo"
-                  />
-                  <h4>{card.name}</h4>
-                  <p>{card.distance} km away</p>
-                  <h5>${card.price.toFixed(2)} per litre</h5>
-                </div>
-              ))}
+        {/* Results for Search 1 */}
+        <div className={styles.cardGrid}>
+          {results1.map((station, idx) => (
+            <div key={`${station.name}-${idx}`} className={styles.stationBlock}>
+              <h3 className={styles.stationName}>{station.name}</h3>
+              <div className={styles.stationGroup}>
+                {Object.entries(station.prices).map(([fuelType, price]) => (
+                  <div key={fuelType} className={styles.fuelCard}>
+                    <div className={styles.cardHeader}>
+                      <img src={zLogo} alt="Z logo" />
+                      <span>{fuelType}</span>
+                    </div>
+                    <p className={styles.price}>
+                      ${price.toFixed(2)} per liter
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
-          )}
-        </section>
-      </main>
-    </>
+          ))}
+        </div>
+
+        {/* Second Search */}
+        <div className={styles.searchGroup}>
+          <input
+            type="text"
+            placeholder="Enter second address"
+            value={address2}
+            onChange={(e) => setAddress2(e.target.value)}
+          />
+          <button onClick={handleSearch2}>Search</button>
+        </div>
+
+        {/* Results for Search 2 */}
+        <div className={styles.cardGrid}>
+          {results2.map((station, idx) => (
+            <div key={`${station.name}-${idx}`} className={styles.stationBlock}>
+              <h3 className={styles.stationName}>{station.name}</h3>
+              <div className={styles.stationGroup}>
+                {Object.entries(station.prices).map(([fuelType, price]) => (
+                  <div key={fuelType} className={styles.fuelCard}>
+                    <div className={styles.cardHeader}>
+                      <img src={zLogo} alt="Z logo" />
+                      <span>{fuelType}</span>
+                    </div>
+                    <p className={styles.price}>
+                      ${price.toFixed(2)} per liter
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+    </div>
   );
-}
+};
+
+export default PriceComparisonPage;
