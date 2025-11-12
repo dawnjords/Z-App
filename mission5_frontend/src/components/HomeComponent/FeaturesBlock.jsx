@@ -20,11 +20,7 @@ export default function FeatureBlock({
         {kicker && <p className={styles.kicker}>{kicker}</p>}
         <h2 className={styles.h2}>{title}</h2>
         {body && <p className={styles.body}>{body}</p>}
-        {ctaLabel && (
-          <a className={styles.button} href={ctaHref}>
-            {ctaLabel}
-          </a>
-        )}
+        {ctaLabel && <a className={styles.button}>{ctaLabel}</a>}
       </div>
     </section>
   );
