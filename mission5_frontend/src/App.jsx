@@ -29,35 +29,48 @@ import LoginPage from "./components/LoginPage";
 import SharetankPage from "./components/SharetankPage";
 
 // ✅ Mobile App Import
-import MobileApp from "../mission5_mobile/mobile";
+import MobileApp from "../../mission5_mobile/mobile.jsx";
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
   // ✅ Routes where header/footer are hidden
-  const excludedRoutes = ["/payment", "/order-confirm", "/declined"];
+  const excludedRoutes = [
+    "/payment",
+    "/order-confirm",
+    "/declined",
+    "/mobile", // hide for mobile routes
+  ];
 
-  // ✅ Automatically redirect to /mobile on smaller screens
+  // ✅ Automatically redirect between desktop and mobile based on width
   useEffect(() => {
-    const isMobile = window.innerWidth <= 768;
+    const handleResize = () => {
+      const isMobile = window.innerWidth <= 768;
+      const onMobilePath = location.pathname.startsWith("/mobile");
 
-    // If user is on mobile but not already in /mobile, redirect them
-    if (isMobile && !location.pathname.startsWith("/mobile")) {
-      navigate("/mobile");
-    }
+      if (isMobile && !onMobilePath) {
+        navigate("/mobile", { replace: true });
+      } else if (!isMobile && onMobilePath) {
+        navigate("/", { replace: true });
+      }
+    };
 
-    // If user is on desktop but in /mobile, redirect them back to /
-    if (!isMobile && location.pathname.startsWith("/mobile")) {
-      navigate("/");
-    }
-  }, [location, navigate]);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [location.pathname, navigate]);
+
+  // ✅ Check if current route starts with any excluded route
+  const isExcludedRoute = excludedRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
 
   return (
     <>
-      {/* ✅ Header hidden on overlay routes */}
-      {!excludedRoutes.includes(location.pathname) && <Header />}
-      {!excludedRoutes.includes(location.pathname) && <Header1 />}
+      {/* ✅ Header hidden on excluded routes */}
+      {!isExcludedRoute && <Header />}
+      {!isExcludedRoute && <Header1 />}
 
       <Routes>
         {/* 🌐 Main Desktop Pages */}
@@ -79,13 +92,13 @@ function App() {
         <Route path="/mobile/*" element={<MobileApp />} />
       </Routes>
 
-      {/* ✅ Footer hidden on overlay routes */}
-      {!excludedRoutes.includes(location.pathname) && <Footer />}
+      {/* ✅ Footer hidden on excluded routes */}
+      {!isExcludedRoute && <Footer />}
     </>
   );
 }
 
-// ✅ Wrap App in BrowserRouter (for useLocation to work)
+// ✅ Wrap App in BrowserRouter
 export default function AppWrapper() {
   return (
     <BrowserRouter>
