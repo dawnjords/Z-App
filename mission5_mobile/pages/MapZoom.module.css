@@ -1,4 +1,5 @@
 .stationcard{
+    position: relative;
     width:360px;
     background:linear-gradient(180deg, #ff7e00, #ffd400); 
     padding:20px;
@@ -7,20 +8,31 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.mappin{
+    position:absolute;
+    top: 12px;
+    right: 32px;
+    width: 28px;
+    height: 28px;
+}
+
 .stationtitle{
     margin:0;
     font-size: 22px;
     font-weight: bold;
+    margin-right: 150px;
 }
 
 .stationaddress{
     margin-top:4px;
     font-size: 13px;
     opacity:0.9;
+    margin-right: 150px;
 }
 
 .stationhours{
     margin-top:16px;
+    margin-right:250px;
 }
 
 .stationhoursRow{
@@ -33,6 +45,7 @@ font-size: 13px;
     margin-top:16px;
     font-weight: bold;
     font-size: 14px;
+    margin-right: 240px;
 }
 
 .stationiconRow{
@@ -62,15 +75,19 @@ font-size: 13px;
     margin: 0;
 }
 
-.stationlink{
-    font-size: 13px;
-    color: blue;
-    cursor: pointer;
+.stationlink {
+  font-size: 13px;
+  color:black;
+  cursor: pointer;
+  text-decoration: underline;     /* <-- forces underline */
+  text-decoration-thickness: 1px; /* <-- bolder underline */
+  text-underline-offset: 2px;     /* <-- nicer spacing */
 }
 
 .stationbtnIcon{
     width: 55px;
     height:55px;
+    
 }
 
 .stationphoneRow{
