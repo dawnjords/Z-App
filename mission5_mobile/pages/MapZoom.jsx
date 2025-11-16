@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./MapZoom.module.css";
+import {useNavigate} from "react-router-dom"
+
 
 function MapZoom() {
+  const navigate = useNavigate();
   return (
     <div className={styles.stationcard}>
       <img
       src="/image/icons/zicons/logos_google-maps.svg"
-      alt="Map pin"
+      alt="Open map"
       className={styles.mappin}
+      onClick={() => navigate("/mobile/map")}
       />
       {/* Header */}
       <h2 className={styles.stationtitle}>Z Kingsway Station</h2>
