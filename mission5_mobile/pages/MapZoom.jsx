@@ -4,6 +4,11 @@ import styles from "./MapZoom.module.css";
 function MapZoom() {
   return (
     <div className={styles.stationcard}>
+      <img
+      src="/image/icons/zicons/logos_google-maps.svg"
+      alt="Map pin"
+      className={styles.mappin}
+      />
       {/* Header */}
       <h2 className={styles.stationtitle}>Z Kingsway Station</h2>
       <p className={styles.stationaddress}>26 Clevedon Road, Papakura</p>
@@ -23,10 +28,10 @@ function MapZoom() {
 
       <div className={styles.stationiconRow}>
         <img src="/image/icons/zicons/toilet.png" alt="Toilet" />
-        <img src="/image/icons/zicons/car.png" alt="Car" />
-        <img src="/image/icons/zicons/gas.png" alt="Gas" />
-        <img src="/image/icons/zicons/ev2.png" alt="EV Charger" />
+        <img src="/image/icons/zicons/Gas.png" alt="Gas" />
         <img src="/image/icons/zicons/coffee.png" alt="Coffee" />
+        <img src="/image/icons/zicons/atm.png" alt="Car" />
+       
       </div>
 
       {/* ---- PRICE BUTTON ---- */}
@@ -35,7 +40,7 @@ function MapZoom() {
           <p className={styles.stationbtnTitle}>Worried about Prices?</p>
           <a className={styles.stationlink}>Click here</a>
         </div>
-        <img src="/image/icons/zicons/money.png" className={styles.stationbtnIcon} />
+        <img src="/image/icons/zicons/dollarsign.svg" className={styles.stationbtnIcon} />
       </div>
 
       {/* Contact */}
@@ -52,7 +57,7 @@ function MapZoom() {
           <p className={styles.stationbtnTitle}>Need more energy?</p>
           <a className={styles.stationlink}>Pre-order Now!</a>
         </div>
-        <img src="/image/icons/zicons/coffee-cup.png" className={styles.stationbtnIcon} />
+        <img src="/image/icons/zicons/blackcoffee.svg" className={styles.stationbtnIcon} />
       </div>
 
       {/* Fuel Button */}
@@ -61,7 +66,7 @@ function MapZoom() {
           <p className={styles.stationbtnTitle}>Out of Fuel?</p>
           <a className={styles.stationlink}>Top up now, Click here!</a>
         </div>
-        <img src="/image/icons/zicons/fuel-light.png" className={styles.stationbtnIcon} />
+        <img src="/image/icons/zicons/emptytank.svg" className={styles.stationbtnIcon} />
       </div>
     </div>
   );
