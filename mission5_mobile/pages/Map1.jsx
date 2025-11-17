@@ -42,7 +42,7 @@ function Map1() {
 
         <button
           className={styles.homeButton}
-          onClick={() => navigate("/home")}
+          onClick={() => navigate("/mobile/home")}
         >
           <img
             src="/image/icons/zicons/house.svg"
@@ -58,11 +58,12 @@ function Map1() {
           alt="Map"
           className={styles.mapImage}
         />
-
+{/* orange dot */}
         <img
-          src="/image/icons/zicons/cent.svg"
+          src="/image/icons/zicons/center.svg"
           alt="station"
           className={styles.stationPin}
+          onClick={() => navigate("/mobile/map-kingsway")}
         />
 
         <img
@@ -102,3 +103,4 @@ function Map1() {
 }
 
 export default Map1;
+ 
