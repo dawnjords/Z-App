@@ -104,7 +104,7 @@ function StationMap({ stations }) {
     <MapContainer
       center={center}
       zoom={13}
-      style={{ height: "480px", width: "100%", borderRadius: "16px" }}  // ⬅️ force size
+      style={{ height: "480px", width: "100%", borderRadius: "16px",  }}
       scrollWheelZoom
       className={styles.mapBox} // keep this too; we’ll move back to CSS after it works
     >
@@ -173,9 +173,17 @@ export default function FindFuelStation() {
  
   return (
     <main className={styles.container}>
-      <section className={styles.hero}>
-        <h1 className={styles.heroTitle}>Find a Fuel Station</h1>
-      </section>
+      <section
+  className={styles.hero}
+  style={{
+    backgroundImage: "url('/image/banners/banner.png')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+  }}
+>
+  <h1 className={styles.heroTitle}>Find a Fuel Station</h1>
+</section>
+
       <SearchBar />
 
       <div className={styles.grid}>

@@ -1,0 +1,70 @@
+.card{
+    display:flex;
+    gap:16px;
+    padding:16px;
+    border-radius:18px;
+    background:#ffffff;
+    box-shadow:0 6px 18px rgba(0,0,0.06);
+}
+
+/* illustration area */
+.illustration{
+    position:relative;
+    width:96px;
+    height:96px;
+    flex-shrink:0;
+    overflow:visible;
+}
+
+/* base ring */
+.ring {
+    position: absolute;
+    border-radius: 50%;
+}
+
+/* outer ring */
+.ringOuter {
+    width: 96px;
+    height: 96px;
+    left:0;
+    top:10px;
+    background:#fee880;
+}
+
+/* second ring */
+.ringSecond{
+    width:82px;
+    height: 82px;
+    left:7px;
+    top:17px;
+    background: #ffd430;
+}
+
+/* third ring */
+.ringThird{
+    width: 70px;
+    height: 70px;
+    left:13px;
+    top:23px;
+    background:rgba(247,147,33,0.7);
+    filter:drop-shadow(0 -2px 5.5px rgba(243,111,33,0.1))
+}
+
+/* fourth ring */
+.ringFourth{
+ width: 56px;
+ height: 56px;
+ left: 20px; 
+ top: 30px;
+ background: rgba(241,102,35,0.9); 
+ filter:drop-shadow(0 -2px 5.5px rgba(243,111,33,0.1))
+}
+
+/* white disc */
+.iconCircle{
+    
+}
+    
+
+
+    
