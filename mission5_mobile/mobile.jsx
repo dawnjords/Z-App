@@ -3,7 +3,7 @@ import React from "react";
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import styles from "./MobileOverlay.module.css";
 
-/* --- IMPORT ALL MOBILE PAGES --- */
+/* IMPORT ALL PAGES */
 import AddCardDetails from "./pages/AddCardDetails";
 import AddVehicle from "./pages/AddVehicle";
 import CardSuccess from "./pages/CardSuccess";
@@ -36,7 +36,7 @@ import TopUpOverlay from "./pages/TopUpOverlay";
 import VegetarianFoodPage from "./pages/VegetarianFoodPage";
 import PaymentLoading from "./pages/PaymentLoading";
 
-/* --- FOOTER COMPONENT --- */
+/* FOOTER */
 function MobileFooter() {
   return (
     <footer className={styles.mobileFooter}>
@@ -53,7 +53,7 @@ function MobileFooter() {
         <Link to="/mobile/scan" className={styles.footerBtn}>
           <img
             src="/image/icons/qrcode.svg"
-            alt="QR Code"
+            alt="QR"
             className={styles.tabIconImg}
           />
           <span className={styles.footerLabel}>QR Code</span>
@@ -62,7 +62,7 @@ function MobileFooter() {
         <Link to="/mobile/sharetank" className={styles.footerBtn}>
           <img
             src="/image/icons/zicons/appfueltank.svg"
-            alt="ShareTank"
+            alt="Sharetank"
             className={styles.tabIconImg}
           />
           <span className={styles.footerLabel}>ShareTank</span>
@@ -84,50 +84,33 @@ function MobileFooter() {
 export default function MobileApp() {
   const location = useLocation();
 
-  /* --------------------------------------------------
-      ROUTES WHERE FOOTER MUST BE HIDDEN
-  --------------------------------------------------- */
   const hiddenFooterRoutes = [
-    // Onboarding
     "/mobile",
     "/mobile/onboarding1",
     "/mobile/onboarding2",
     "/mobile/onboarding3",
     "/mobile/onboarding4",
 
-    // Signup
     "/mobile/signup1",
     "/mobile/signup2",
 
-    // Add / Payment flow
     "/mobile/add-card",
-    "/mobile/add-payment", // if this route exists
     "/mobile/card-success",
     "/mobile/loading",
     "/mobile/order-confirm",
     "/mobile/declined",
+    "/mobile/topup",
 
-    // Vehicle
     "/mobile/add-vehicle",
     "/mobile/pay-by-plate",
-    "/mobile/how-it-works", // if separate page exists
 
-    // Maps
     "/mobile/map",
     "/mobile/map-zoom",
     "/mobile/map-kingsway",
 
-    // Price Compare
     "/mobile/price-compare",
-
-    // QR Scan
     "/mobile/scan",
-
-    // More Menu page (full screen)
     "/mobile/more",
-
-    // TopUp pop up
-    "/mobile/topup",
   ];
 
   const hideFooter = hiddenFooterRoutes.includes(location.pathname);
@@ -161,7 +144,7 @@ export default function MobileApp() {
           <Route path="map-zoom" element={<MapZoom />} />
           <Route path="map-kingsway" element={<KingswayMap />} />
 
-          {/* Payments */}
+          {/* Payment */}
           <Route path="add-card" element={<AddCardDetails />} />
           <Route path="card-success" element={<CardSuccess />} />
           <Route path="add-vehicle" element={<AddVehicle />} />
@@ -180,8 +163,10 @@ export default function MobileApp() {
           <Route path="signup2" element={<SignUp2 />} />
 
           {/* Extras */}
-          <Route path="thanks" element={<ThankYouPage />} />
           <Route path="veg-food" element={<VegetarianFoodPage />} />
+          <Route path="thanks" element={<ThankYouPage />} />
+
+          <Route path="price-compare" element={<PriceCompare />} />
 
           {/* 404 */}
           <Route
@@ -194,7 +179,6 @@ export default function MobileApp() {
           />
         </Routes>
 
-        {/* footer only shows if not hidden */}
         {!hideFooter && <MobileFooter />}
       </div>
     </div>
