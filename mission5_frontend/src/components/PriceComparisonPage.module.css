@@ -1,0 +1,179 @@
+.pageWrapper {
+  font-family: "Inter", sans-serif;
+  background: white;
+  overflow-x: hidden;
+}
+
+/* --- Top Banner --- */
+.topBanner img {
+  width: 100%;
+  display: block;
+}
+
+/* --- Hero Section --- */
+.heroSection {
+  background: linear-gradient(90deg, #ffb300, #ff6f00);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.heroImage {
+  width: 80%;
+  max-width: 1000px;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* --- White Section (Search + Results) --- */
+.whiteSection {
+  background: #fff;
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+
+.sectionTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* --- Search Input Groups --- */
+.searchGroup {
+  display: flex;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.searchGroup input {
+  width: 300px;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.searchGroup input:focus {
+  outline: none;
+  border-color: #ff6f00;
+  box-shadow: 0 0 5px rgba(255, 111, 0, 0.3);
+}
+
+.searchGroup button {
+  background: #4b2e83;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.8rem 1.4rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.searchGroup button:hover {
+  background: #3a2264;
+  transform: translateY(-2px);
+}
+
+/* --- Cards Grid --- */
+.cardGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.2rem;
+  margin-bottom: 3rem;
+}
+
+/* --- Station Block (Title + Fuel Cards) --- */
+.stationBlock {
+  text-align: center;
+}
+
+.stationName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+/* --- Fuel Cards Layout --- */
+.stationGroup {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* --- Fuel Card Design --- */
+.fuelCard {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffa726, #ffcc80);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.fuelCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* --- Fuel Card Inner Content --- */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 0.4rem;
+}
+
+.cardHeader img {
+  width: 26px;
+  height: 26px;
+}
+
+.cardHeader span {
+  font-weight: 700;
+  color: #fff;
+}
+
+.price {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+  .heroImage {
+    width: 95%;
+  }
+
+  .searchGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .stationGroup {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fuelCard {
+    width: 140px;
+    height: 140px;
+  }
+
+  .stationName {
+    font-size: 1.1rem;
+  }
+}

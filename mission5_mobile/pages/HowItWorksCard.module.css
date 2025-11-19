@@ -1,0 +1,127 @@
+/* ---- CARD CONTAINER ---- */
+.card {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  flex: 0 0 168px;          /* fixed width, no shrinking */
+  border-radius: 10px;
+  background: #fff;         /* var(--white-ffffff, #FFF) */
+  padding: 12px 12px 16px;  /* tweak if you want more space */
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  overflow: hidden;         /* hide circles in the corner */
+}
+
+/* ---- ILLUSTRATION / RINGS ---- */
+.illustration {
+  position: absolute;
+  bottom: -30px;     /* was 0 – drop the whole ring group a bit */
+  left: -20px;       /* was -20 (invalid, treated as 0) */
+  width: 220px;
+  height: 220px;
+  pointer-events: none;
+}
+
+
+/* base ring (shared styles) */
+.ring {
+  position: absolute;
+  border-radius: 50%;
+}
+
+/* biggest circle */
+.ringOuter {
+  width: 220px;
+  height: 220px;
+  background: #ffe97a;
+  bottom: -110px;   /* -½ of width/height */
+  left: -110px;
+}
+
+/* next */
+.ringSecond {
+  width: 190px;
+  height: 190px;
+  background: #ffd148;
+  bottom: -95px;
+  left: -95px;
+}
+
+/* next */
+.ringThird {
+  width: 160px;
+  height: 160px;
+  background: #ffb033;
+  bottom: -80px;
+  left: -80px;
+}
+
+/* smallest */
+.ringFourth {
+  width: 130px;
+  height: 130px;
+  background: #ff8a1a;
+  bottom: -65px;
+  left: -65px;
+}
+
+
+/* white disc with icon */
+.iconCircle {
+  position: absolute;
+  bottom: 22px;       /* adjust to match design */
+  left: 20%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 80px;
+}
+
+.pin {
+  position: absolute;
+  width: 36px;
+  left: 50%;
+  top: 5%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+.mask {
+  position: absolute;
+  width: 18px;
+  left: 50%;
+  top: 12%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+
+
+.icon {
+  width: 26px;
+  height: 26px;
+}
+
+/* ---- TEXT AREA ---- */
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 16px;
+  color: #24135f; /* Z purple */
+  margin-bottom: 8px;
+}
+
+/* optional: description text under the title */
+.description {
+  font-size: 11px;
+  line-height: 1.4;
+  color: #777768;
+  margin-top: 4px;
+}
+.body {
+  font-size: 14px;
+  line-height: 1.4;
+  color: #555555;
+}

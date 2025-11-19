@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+
+/* -------------------------------------------
+   FULL SCREEN BACKGROUND
+-------------------------------------------- */
+.screenBg {
+  height: 100svh;
+  width: 100%;
+  background-color: #ececf3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  font-family: "Roboto", system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+/* -------------------------------------------
+   MAIN APP CONTAINER (card)
+   — FIXED: No rounded corners at top
+   — FIXED: Always full width on mobile
+   — FIXED: Full height with/without footer
+-------------------------------------------- */
+.card {
+  width: 100%;
+  max-width: 390px;
+
+  /* remove rounded top corners */
+  border-radius: 0;
+
+  background: #fff;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+
+  /* default = full height minus footer */
+  height: calc(100svh - 64px);
+  margin: 0 auto;
+}
+
+/* When footer hidden → full height */
+.noFooter {
+  height: 100svh !important;
+  padding-bottom: 0 !important;
+}
+
+/* -------------------------------------------
+   FOOTER NAVIGATION
+-------------------------------------------- */
+.mobileFooter {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 390px;
+  height: 64px;
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+
+  padding-bottom: env(safe-area-inset-bottom, 8px);
+}
+
+.footerIcons {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.footerBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  width: 25%;
+  color: #2c2c54;
+}
+
+.footerBtn img {
+  width: 22px;
+  height: 22px;
+}
+
+.footerLabel {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.footerBtnActive .footerLabel {
+  color: #f97316 !important;
+}
+
+/* -------------------------------------------
+   Sharetank Tab Bar
+-------------------------------------------- */
+.tabBar {
+  border-top: 1px solid #e5e7eb;
+  padding: 6px 6px 12px;
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 4px 0;
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.tabIconImg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+.tabLabel {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.tabLabelActive {
+  color: #f97316 !important;
+  font-weight: 600;
+}
