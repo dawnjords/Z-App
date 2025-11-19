@@ -1,0 +1,223 @@
+.page {
+  padding: 24px 16px 64px;
+  background: #fff;
+  color: #1a1a1a;
+}
+.title {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 900;
+  color:white; /* black text */
+  margin: 0;
+}
+/* HERO */
+.hero {
+  background-image: url("/image/sharetank/fuel banner header.png");
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  
+  margin: 20px auto;     /* centers horizontally */
+  display: flex;         /* centers text inside */
+  align-items: center;   /* centers text vertically */
+  padding-left: 40px;    /* adds spacing from left edge */
+  height: 180px;         /* controls banner height */
+}
+
+
+.herohead {
+  font-size: 24px;
+  font-weight: 700;
+  color: #f58220; /* optional orange highlight */
+  margin-bottom: 10px;
+}
+
+.heroKick {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 700px;
+  margin: 0 auto;
+}
+.content {
+  padding: 32px 24px;
+  text-align: center;
+  color: #333;
+}
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  max-width: 1280px;
+  margin: 40px auto 40px;
+  
+}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 14px;
+  box-shadow: 0 3px 4px rgba(0,0,0,.01);
+  width:303px;
+  height: 382px;
+  text-align: center;
+  padding-top: 20px;
+}
+.cardImgWrap {
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: #f5f5f5;
+}
+.cardImg {
+   width: 100%;
+   object-fit: cover; 
+   display: block;
+  margin-top:6px; 
+}
+   
+.cardTitle { margin: 12px 0 6px; font-weight: 700; font-size: 16px; }
+.cardBody { margin: 0; font-size: 13px; opacity: 0.9; }
+
+/* WHY SECTION */
+.why {
+  max-width: 1280px;        /* ✅ limits total width */
+  margin: 0 auto;           /* ✅ centers on the page */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  background: #fff;         /* optional white background */
+  border-radius: 12px;
+  padding: 10px 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.whyTitle {
+  color: #ff7a00;
+  margin: 0 0 12px;
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 800;
+}
+ .whyText{
+  flex:1;
+}
+.whyImgWrap {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.whyImg {
+  width: 100%;             
+  max-width: 1280px;        
+  height: 350px;           
+  object-fit: cover;      
+  border-radius: 10px;
+}
+/* buttons */
+.storeButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* App / Play Store Buttons */
+.storeBtn img.icon {
+  height: 50px;         /* Adjust to fit your banner */
+  width: auto;
+  border-radius: 8px;   /* optional smooth corners */
+  transition: transform 0.2s ease;
+}
+
+.storeBtn img.icon:hover {
+  transform: scale(1.05);
+}
+
+/* BANNER */
+.banner {
+  background: linear-gradient(90deg, #f7941d 0%, #ffb347 100%);
+  border-radius: 12px;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0; /* remove the gap above */
+}
+.bannerInner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.bannerCopy{
+  display:flex;
+align-items: center;
+}
+.bannerTitle {
+  font-size: 60px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+.badges {
+  display: flex;
+  gap: 12px;
+  margin-right:580px;
+}
+
+.badge {
+  width: auto;
+  height:40px;
+  display:block;
+}
+
+.bannerPhone {
+  width: 420px;
+  max-width: 40vw;
+  height: auto;
+  display:block;
+}
+
+
+.bannerText {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.badges {
+  display: flex;
+  gap: 12px;
+}
+
+.badge {
+  width: 130px;
+  height: auto;
+}
+
+.bannerPhone {
+  max-width:1280px;
+  max-width: 480px;
+  height: auto;
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .features { grid-template-columns: 1fr 1fr; }
+  .why { grid-template-columns: 1fr; }
+  .bannerInner { grid-template-columns: 1fr; row-gap: 12px; }
+  .bannerPhone { justify-self: center; }
+}
+@media (max-width: 640px) {
+  .features { grid-template-columns: 1fr; }
+  .badge { height: 34px; }
+}

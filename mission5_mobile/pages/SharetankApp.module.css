@@ -1,0 +1,497 @@
+.screen {
+  min-height: 100vh;
+  background: #f3f3f7;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 16px 0;
+}
+
+.phone {
+  width: 360px;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 32px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- STATUS BAR ---- */
+
+.statusBar {
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #111827;
+}
+
+.time {
+  font-weight: 600;
+}
+
+.statusRight {
+  display: flex;
+  gap: 4px;
+}
+
+.statusDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #111827;
+}
+
+/* ---- HEADER CARD ---- */
+
+.headerCard {
+  margin: 0 16px;
+  padding: 16px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #F37120 0.06%, #F68C19 31.04%, #F9A711 62.01%, #FFDD02 92.99%);
+  color: #ffffff;
+}
+
+
+.headerTopRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tankTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tankLogo {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+ 
+
+.tankName {
+    position: absolute;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+
+.tankSubtitle {
+  font-size: 11px;
+  opacity: 0.9;
+}
+
+.percentBlock {
+  text-align: right;
+}
+
+.percentValue {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.percentSign {
+  font-size: 14px;
+  margin-left: 2px;
+}
+
+/* middle */
+
+.headerMiddleRow {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.volumeWrapper {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* pink glow behind the white circle */
+.volumeDot {
+  position: absolute;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255, 163, 214, 0.607); /* pinky glow */
+  filter: blur(6px);
+  z-index: 0;
+}
+
+/* main white circle with 115 L text */
+.volumeCircle {
+  position: relative;
+  z-index: 2;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ffffff;                /* WHITE background */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.7);
+}
+
+.volumeInner {
+  text-align: center;
+}
+
+.volumeNumber {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2354; /* dark blue */
+}
+
+.volumeMax {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color:lightgray; /* light grey */
+}
+
+/* both arcs share base position */
+.volumeArc {
+  position: absolute;
+  width: 100px;
+  height: 80px;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin-top: 60px;
+ 
+  
+}
+
+/* dark blue arc – bottom-left */
+.volumeArcDark {
+  transform: rotate(-10deg); 
+  margin-right: 40px;
+  margin-top: 65px;/* tweak as needed */
+}
+
+/* white arc – top-right */
+.volumeArcLight {
+  transform: rotate(265deg); 
+  margin-left: 49px;
+ margin-top:59px;
+ filter:brightness(0)invert(1)
+ 
+ 
+ /* tweak as needed */
+}
+
+.headerButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  border-radius: 999px;
+  border: none;
+  font-size: 13px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.primaryBtn {
+  background: #ffffff;
+  color: #f97316;
+  font-weight: 600;
+}
+
+.secondaryBtn {
+  background: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+/* ---- SHARED SECTION ---- */
+
+.sharedSection {
+  padding: 16px 16px 8px;
+}
+
+.sharedHeader {
+  margin-bottom: 8px;
+}
+
+.sharedTitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.sharedSubtitle {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.avatarRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-left:20px ;
+ 
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.addMember {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px dashed #9ca3af;  
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  color: #6b7280;
+  cursor: pointer;
+  margin:0 0 0 20px
+}
+
+
+.activityBtn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 999px;
+  border: none;
+  background: #111827;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* ---- SETTINGS LIST ---- */
+
+.settingsList {
+  padding: 8px 16px 16px;
+}
+
+.settingsRow {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-right: 40px;
+}
+
+.settingsTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-right: 50px;
+}
+
+.settingsSubtitle {
+  font-size: 10px;
+  color: #6b7280;
+  margin-top: 2px;
+  margin-left: 8px;
+}
+.settingsHow{
+   font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-right: 120px;  
+}
+.settingsSubtitlehow{
+   font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px; 
+  margin-right: 90px; 
+}
+
+.settingsTitlepay{
+ font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+  margin-right: 120px;    
+}
+
+.settingsPay{
+ font-size: 11px;
+  color: #6b7280;
+  margin-top: 2px; 
+    
+}
+
+.switchTrack {
+  width: 42px;
+  height: 22px;
+  border-radius: 999px;
+  background: #e5e7eb;
+  padding: 3px;
+  margin-left: 40px;
+}
+
+.switchThumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #9ca3af;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.switchOn {
+  background: #22c55e;
+  transform: translateX(18px);
+}
+
+.chevron {
+  font-size: 18px;
+  color: #9ca3af;
+}
+
+.divider {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ---- TAB BAR ---- */
+
+.tabBar {
+  border-top: 1px solid #e5e7eb;
+  padding: 6px 6px 8px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 4px 0;
+  font-size: 11px;
+  color: #6b7280;
+  cursor: pointer;
+}
+
+.tabIconImg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+
+.tabIcon {
+  font-size: 16px;
+  margin-bottom: 2px;
+}
+
+.tabActive .tabLabel {
+  color: #f97316 !important;
+}
+
+.tabActive img {
+  filter: brightness(1.1) saturate(1.2);
+}
+
+
+.mobilearrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.8;
+}
+
+.tabIconImg {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+.dropIcon{
+    position:absolute;
+    margin-bottom: 80px;
+}
+   
+ .topTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 16px 8px;  /* space under status bar */
+  background: #ffffff;
+}
+
+.topTitleLeft {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.topDropIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.topTitleText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4b3bbd; /* purple-ish like the design */
+}
+
+.topArrowIcon {
+  width: 12px;
+  height: 12px;
+}
+   
+ .bottomHandle {
+  position: relative;
+  width: 100%;
+  height: 40px;           /* smaller height */
+  margin-top: 10px;       /* pushes it DOWN */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+
+.bottomCurve {
+  position: absolute;
+  top: 0;
+  width: 75%;
+  height:auto ;
+  transform: translateY(-20px);
+  opacity: 0.95;
+}
+
+.bottomX {
+  z-index: 2;
+  width: 22px;
+  height: 22px;
+}
+ 
+
+

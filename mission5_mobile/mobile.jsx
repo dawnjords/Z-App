@@ -16,6 +16,7 @@ import FoodPage from "./pages/FoodPage";
 import HomePage from "./pages/HomePage";
 import HotDrinkDetails from "./pages/HotDrinkDetails";
 import HotDrinksPage from "./pages/HotDrinksPage";
+import KingswayMap from "./pages/KingswayMap";
 import Map1 from "./pages/Map1";
 import MapZoom from "./pages/MapZoom";
 import MoreMenu from "./pages/MoreMenu";
@@ -83,6 +84,9 @@ export default function MobileApp() {
           {/* Map Screens */}
           <Route path="map" element={<Map1 />} />
           <Route path="map-zoom" element={<MapZoom />} />
+          <Route path="map-kingsway" element={<KingswayMap />} />
+
+
 
           {/* Payments / Cards */}
           <Route path="add-card" element={<AddCardDetails />} />
