@@ -34,7 +34,12 @@ import SignUp2 from "./pages/SignUp2";
 import ThankYouPage from "./pages/ThankYouPage";
 import TopUpOverlay from "./pages/TopUpOverlay";
 import VegetarianFoodPage from "./pages/VegetarianFoodPage";
+
+import HowItWorksPage from "./pages/HowItWorksPage";
+
+
 import PaymentLoading from "./pages/PaymentLoading";
+
 
 /* --- FOOTER COMPONENT --- */
 function MobileFooter() {
@@ -174,6 +179,7 @@ export default function MobileApp() {
           {/* QR + Sharetank */}
           <Route path="scan" element={<ScanQRCode />} />
           <Route path="sharetank" element={<Sharetank />} />
+          <Route path="howitworks" element={<HowItWorksPage />} />
 
           {/* Signup */}
           <Route path="signup1" element={<SignUp1 />} />
