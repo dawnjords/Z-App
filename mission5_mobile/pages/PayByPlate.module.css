@@ -1,0 +1,128 @@
+.screen{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 12px 20px 24px;
+    background: #ffffff;
+}
+
+/* status bar */
+.statusBar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    margin-bottom: 8px;
+    
+}
+
+.time{
+    font-weight: 600;
+ 
+}
+
+.statusIcons{
+    height:auto;
+}
+
+/* top bar */
+.topBar{
+    display: flex;
+    align-items: center;
+    gap:8px;
+    margin-bottom: 16px;
+}
+
+.backBtn{
+    border: none;
+    background: transparent;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.backIcon{
+    width: 14px;
+    height: 14px;
+    rotate: 90deg;
+}
+
+.topIcon{
+    width: 24px;
+    height: 24px;
+}
+
+.topTitle{
+    font-size: 18px;
+    font-weight: 600;
+    color: #2b2b86;
+}
+
+/* intro text */
+.subtitle {
+    margin-top: 8px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: #707070;
+    text-align: center;
+    padding: 0 10px;
+}
+
+/* tabs */
+.tabs{
+    display: flex;
+    margin-top: 28px;
+    border-bottom: 1px solid #e4e4e4;
+}
+
+.tab{
+    background: none;
+    border: none;
+    padding: 0 0 8px;
+    margin-right: 32px;
+    font-size: 14px;
+    color: #b0b0b0;
+    cursor: pointer;
+}
+
+.activeTab{
+    color: #2b2b86;
+    font-weight: 600;
+    border-bottom: 2px solid #2b2b86;
+}
+
+/* empty state */
+.emptyState{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.carImage{
+    width: 200px;
+    height: auto;
+  
+}
+
+.emptyText{
+    font-size: 15px;
+    color: #a0a0a0;
+    margin-bottom: 10px;
+   
+}
+
+.goAddVehicleBtn {
+  all: unset;           /* resets EVERYTHING */
+  cursor: pointer;
+  color: #2b2b86;
+  font-size: 24px;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.addVehicleBtn:hover {
+  opacity: 0.7;
+}
