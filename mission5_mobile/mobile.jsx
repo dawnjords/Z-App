@@ -40,12 +40,12 @@ import HowItWorksPage from "./pages/HowItWorksPage";
 
 import PaymentLoading from "./pages/PaymentLoading";
 
-<<<<<<< HEAD
+ HEAD
 /* FOOTER */
-=======
+
 
 /* --- FOOTER COMPONENT --- */
->>>>>>> bef84af1ecff9cc0cd69589cfd7d87003047596e
+ bef84af1ecff9cc0cd69589cfd7d87003047596e
 function MobileFooter() {
   return (
     <footer className={styles.mobileFooter}>
@@ -111,7 +111,12 @@ export default function MobileApp() {
     "/mobile/topup",
 
     "/mobile/add-vehicle",
-    "/mobile/pay-by-plate",
+
+    "/mobile/paybyplate",
+    "/mobile/howitworks", // if separate page exists
+
+ 
+
 
     "/mobile/map",
     "/mobile/map-zoom",
@@ -157,7 +162,7 @@ export default function MobileApp() {
           <Route path="add-card" element={<AddCardDetails />} />
           <Route path="card-success" element={<CardSuccess />} />
           <Route path="add-vehicle" element={<AddVehicle />} />
-          <Route path="pay-by-plate" element={<PayByPlate />} />
+          <Route path="paybyplate" element={<PayByPlate />} />
           <Route path="order-confirm" element={<ConfirmOrderPage />} />
           <Route path="declined" element={<DeclinedOverlayMobile />} />
           <Route path="topup" element={<TopUpOverlay />} />

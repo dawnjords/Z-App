@@ -1,6 +1,7 @@
 .stationcard{
     position: relative;
     width:360px;
+    height: 900px;
     background:linear-gradient(180deg, #ff7e00, #ffd400); 
     padding:20px;
     border-radius:16px;

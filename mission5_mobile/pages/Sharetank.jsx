@@ -148,7 +148,7 @@ export default function Sharetank() {
 
           <div
   className={styles.settingsRow}
-  onClick={() => navigate("/howitworks")}
+  onClick={() => navigate("/mobile/howitworks")}
   style={{ cursor: "pointer" }}
 >
   <img src="/image/icons/zicons/trailer.svg" alt="trailer" className={styles.settingsIcon} />
@@ -192,48 +192,12 @@ export default function Sharetank() {
 </div>
 
 
-        {/* ---- BOTTOM NAV ---- */}
-       <nav className={styles.tabBar}>
-  {/* HOME */}
-  <button className={styles.tab}>
-    <img
-      src="/image/icons/zicons/house.svg"
-      alt="Home"
-      className={styles.tabIconImg}
-    />
-    <span className={styles.tabLabel}>Home</span>
-  </button>
+   
 
-  {/* QR CODE */}
-  <button className={styles.tab}>
-    <img
-      src="/image/icons/qrcode.svg"
-      alt="QR Code"
-      className={styles.tabIconImg}
-    />
-    <span className={styles.tabLabel}>QR code</span>
-  </button>
+  
 
-  {/* SHARETANK */}
-  <button className={`${styles.tab} ${styles.tabActive}`}>
-    <img
-      src="/image/icons/zicons/appfueltank.svg"
-      alt="Fuel Tank"
-      className={styles.tabIconImg}
-    />
-    <span className={styles.tabLabel}>Share Tank</span>
-  </button>
-
-  {/* MORE */}
-  <button className={styles.tab}>
-    <img
-      src="/image/icons/zicons/hamburger.svg"
-      alt="More"
-      className={styles.tabIconImg}
-    />
-    <span className={styles.tabLabel}>More</span>
-  </button>
-</nav>
+  
+  
 
       </div>
     </div>
