@@ -6,24 +6,29 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import helmet from "helmet";
-import mongoSanitize from "express-mongo-sanitize";
+// import mongoSanitize from "express-mongo-sanitize";
 
 // 👉 import any  team routers here
 // import itemsRouter from "./routes/items.js";  // example
 
 // 👉 margaret new routers
 import stationsRouter from "./routes/stations.js";
-import vehiclesRouter from "./routes/vehicles.js";
+import vehiclesRouter from "./routes/vehicle.js";
+
+// Jordan
+
+import authRouter from "./routes/auth.js";
 
 const app = express();
 const limiter = rateLimit({
-windowMS: 15 * 60 * 1000,//15 minutes
-max:100, //limit each ip to 100 request per window
-message: "too many requests, please try again later",
+  windowMs: 15 * 60 * 1000, //15 minutes
+  max: 100, //limit each ip to 100 request per window
+  message: "too many requests, please try again later",
 });
 app.use(limiter);
 app.use(helmet());
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
+
 // ---------- Middleware ----------
 app.use(
   cors({
@@ -57,6 +62,9 @@ mongoose
 // 👇 margaret Sharetank routes
 app.use("/api/stations", stationsRouter);
 app.use("/api/vehicles", vehiclesRouter);
+
+// Jordan
+app.use("/api/auth", authRouter);
 
 // Simple health-check route
 app.get("/", (req, res) => {
