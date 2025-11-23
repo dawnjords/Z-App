@@ -1,6 +1,6 @@
 // mobile.jsx
 import React from "react";
-import { Routes, Route, Link, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useLocation, Navigate } from "react-router-dom";
 import styles from "./MobileOverlay.module.css";
 
 /* IMPORT ALL PAGES */
@@ -34,18 +34,10 @@ import SignUp2 from "./pages/SignUp2";
 import ThankYouPage from "./pages/ThankYouPage";
 import TopUpOverlay from "./pages/TopUpOverlay";
 import VegetarianFoodPage from "./pages/VegetarianFoodPage";
-
 import HowItWorksPage from "./pages/HowItWorksPage";
-
-
 import PaymentLoading from "./pages/PaymentLoading";
 
-
-/* FOOTER */
-
-
 /* --- FOOTER COMPONENT --- */
-//  bef84af1ecff9cc0cd69589cfd7d87003047596e
 function MobileFooter() {
   return (
     <footer className={styles.mobileFooter}>
@@ -99,32 +91,21 @@ export default function MobileApp() {
     "/mobile/onboarding2",
     "/mobile/onboarding3",
     "/mobile/onboarding4",
-
     "/mobile/signup1",
     "/mobile/signup2",
-
     "/mobile/add-card",
     "/mobile/card-success",
     "/mobile/loading",
     "/mobile/order-confirm",
     "/mobile/declined",
     "/mobile/topup",
-
     "/mobile/add-vehicle",
-
     "/mobile/paybyplate",
-    "/mobile/howitworks", // if separate page exists
-
- 
-
-
+    "/mobile/howitworks",
     "/mobile/map",
     "/mobile/map-zoom",
     "/mobile/map-kingsway",
-
     "/mobile/price-compare",
-    "/mobile/scan",
-    "/mobile/more",
   ];
 
   const hideFooter = hiddenFooterRoutes.includes(location.pathname);
@@ -133,24 +114,26 @@ export default function MobileApp() {
     <div className={styles.screenBg}>
       <div className={`${styles.card} ${hideFooter ? styles.noFooter : ""}`}>
         <Routes>
+          {/* Default redirect */}
+          <Route
+            path="/"
+            element={<Navigate to="/mobile/onboarding1" replace />}
+          />
+
           {/* Onboarding */}
-          <Route index element={<Onboarding1 />} />
           <Route path="onboarding1" element={<Onboarding1 />} />
           <Route path="onboarding2" element={<Onboarding2 />} />
           <Route path="onboarding3" element={<Onboarding3 />} />
           <Route path="onboarding4" element={<Onboarding4 />} />
 
-          {/* Main */}
+          {/* Main Pages */}
           <Route path="home" element={<HomePage />} />
           <Route path="food" element={<FoodPage />} />
           <Route path="food/:id" element={<FoodDetails />} />
-
           <Route path="cold-drinks" element={<ColdDrinksPage />} />
           <Route path="cold-drink/:id" element={<ColdDrinkDetails />} />
-
           <Route path="hot-drinks" element={<HotDrinksPage />} />
           <Route path="hot-drink/:id" element={<HotDrinkDetails />} />
-
           <Route path="order-food-home" element={<OrderFoodHome />} />
 
           {/* Maps */}
@@ -168,22 +151,16 @@ export default function MobileApp() {
           <Route path="topup" element={<TopUpOverlay />} />
           <Route path="loading" element={<PaymentLoading />} />
 
-          {/* QR + Sharetank */}
+          {/* QR + More + Extras */}
           <Route path="scan" element={<ScanQRCode />} />
+          <Route path="more" element={<MoreMenu />} />
           <Route path="sharetank" element={<Sharetank />} />
           <Route path="howitworks" element={<HowItWorksPage />} />
-
-          {/* Signup */}
-          <Route path="signup1" element={<SignUp1 />} />
-          <Route path="signup2" element={<SignUp2 />} />
-
-          {/* Extras */}
           <Route path="veg-food" element={<VegetarianFoodPage />} />
           <Route path="thanks" element={<ThankYouPage />} />
-
           <Route path="price-compare" element={<PriceCompare />} />
 
-          {/* 404 */}
+          {/* 404 fallback */}
           <Route
             path="*"
             element={

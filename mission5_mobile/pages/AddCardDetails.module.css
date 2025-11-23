@@ -1,64 +1,55 @@
-/* AddCardDetails.module.css */
-
-.container {
+.cardContainer {
   padding: 20px;
-  font-family: "Roboto", sans-serif;
+  text-align: left;
 }
 
-.statusBar {
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-.title {
-  font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.formGroup {
-  margin-bottom: 16px;
-}
-
-.label {
-  font-size: 13px;
-  font-weight: 500;
-  margin-bottom: 6px;
-  display: block;
-}
-
-.input {
-  width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #dcdcdc;
-  font-size: 15px;
-}
-
-.cardIcon {
-  width: 40px;
-  height: 24px;
-  margin-left: auto;
-}
-
-.infoRow {
+.form {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.btn {
-  width: 100%;
-  background: #2c2c54;
-  color: #fff;
-  padding: 12px;
+label {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.primaryBtn {
+  margin-top: 20px;
+  background-color: #2e2182;
+  color: white;
   border: none;
   border-radius: 8px;
+  padding: 12px 0;
   font-size: 15px;
-  margin-top: 20px;
   cursor: pointer;
 }
 
-.btn:hover {
-  background: #25254b;
+.centerScreen {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.successCircle {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #ff8a00, #ffcc80);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkMark {
+  font-size: 36px;
+  color: white;
+  font-weight: bold;
 }

@@ -1,33 +1,81 @@
-// pages/AddCardDetails.jsx
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AddCardDetails.module.css";
+import { useNavigate } from "react-router-dom";
 
 export default function AddCardDetails() {
-  return (
-    <div className={styles.container}>
-      <div className={styles.statusBar}>9:41</div>
+  const [loading, setLoading] = useState(true);
+  const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
-      <div className={styles.header}>
-        <span className={styles.back}>←</span>
-        <span className={styles.title}>Add Payment method</span>
-        <span className={styles.empty}></span>
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      setSuccess(true);
+    }, 1200);
+  };
+
+  if (loading)
+    return (
+      <div className={styles.centerScreen}>
+        <h3>Add Payment method</h3>
+        <p>Loading... Please wait while the page loads</p>
       </div>
+    );
 
-      <div className={styles.form}>
+  if (success)
+    return (
+      <div className={styles.centerScreen}>
+        <div className={styles.successCircle}>
+          <div className={styles.checkMark}>✓</div>
+        </div>
+        <h3>Payment method added successfully</h3>
+        <p>Thank you for choosing Z App.</p>
+        <button
+          className={styles.primaryBtn}
+          onClick={() => navigate("/mobile/home")}
+        >
+          Go back to home
+        </button>
+      </div>
+    );
+
+  return (
+    <div className={styles.cardContainer}>
+      <h3>Add Payment method</h3>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <label>Card number</label>
-        <input type="text" placeholder="Enter card number" />
+        <input
+          type="text"
+          placeholder="Please enter your card number"
+          required
+        />
 
         <label>Expiry date</label>
-        <input type="text" placeholder="MM/YY" />
+        <input type="text" placeholder="MM/YY" required />
 
-        <label>CVV</label>
-        <input type="text" placeholder="123" />
+        <label>CVV number</label>
+        <input
+          type="text"
+          placeholder="Please enter your CVV number"
+          required
+        />
 
         <label>Name on card</label>
-        <input type="text" placeholder="Enter name" />
+        <input
+          type="text"
+          placeholder="Please enter your name on card"
+          required
+        />
 
-        <button className={styles.payBtn}>Click to pay</button>
-      </div>
+        <button className={styles.primaryBtn}>Click to Pay</button>
+      </form>
     </div>
   );
 }
