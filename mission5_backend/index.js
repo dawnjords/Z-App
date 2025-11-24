@@ -6,7 +6,8 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import helmet from "helmet";
-import mongoSanitize from "express-mongo-sanitize";
+import sharetankRouter from "./routes/sharetank.js"
+// import mongoSanitize from "express-mongo-sanitize";
 
 // 👉 team routers here (example)
 // import itemsRouter from "./routes/items.js";
@@ -27,12 +28,13 @@ const limiter = rateLimit({
   message: "Too many requests, please try again later",
 });
 app.use(limiter);
+app.use("/api/sharetank", sharetankRouter);
 
 // security headers
 app.use(helmet());
 
 // sanitize Mongo inputs
-app.use(mongoSanitize());
+// app.use(mongoSanitize());
 
 // CORS
 app.use(

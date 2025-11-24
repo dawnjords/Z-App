@@ -1,9 +1,31 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import styles from "./SharetankApp.module.css";
 import {useNavigate} from "react-router-dom";
 
+
 export default function Sharetank() {
   const navigate =useNavigate();
+  const [tank, setTank] =useState (null);
+  const tankId ="demo-tank-1"; //replace with id
+  const maxMembers = 5;
+  const members = tank?.members || [];
+  const remainingSlots = maxMembers - members.length;
+
+  async function handleAddMember(){
+    await fetch(`/api/sharetank/${tankId}/members`,{
+    method:"POST",
+    headers:{"Content-Type": "application/json"},
+    body: JSON.stringify({
+      name:"New friend",
+      avatarUrl:"/image/icons/sharetank2/user3.png"
+    }),
+    });
+    const res =await fetch(`/api/sharetank/${tankId}`);
+    const data = await res.json();
+    setTank(data);
+    };
+
 
   return (
     <div className={styles.screen}>
@@ -105,22 +127,30 @@ export default function Sharetank() {
             </span>
           </div>
 
-          <div className={styles.avatarRow}>
-            {/* Replace src with your avatar images */}
-            <img
-              className={styles.avatar}
-              src="/image/icons/zicons/firstmember.jpg"
-              alt="Member 1"
-            />
-            <img
-              className={styles.avatar}
-              src="/image/icons/zicons/secondmember.jpg"
-              alt="Member 2"
-            />
-            <button className={styles.addMember}>+ Add</button>
-            <button className={styles.addMember}>+ Add</button>
-            <button className={styles.addMember}>+ Add</button>
-          </div>
+     <div className={styles.avatarRow}>
+
+  {/* Step 4 — show existing members from DB */}
+  {tank?.members?.map((m) => (
+    <img
+      key={m.name}
+      className={styles.avatar}
+      src={m.avatarUrl}
+      alt={m.name}
+    />
+  ))}
+
+  {/* Step 4 — fill remaining slots with +Add buttons */}
+  {Array.from({ length: 5 - (tank?.members?.length || 0) }).map((_, i) => (
+    <div
+      key={i}
+      className={styles.addCircle}
+      onClick={handleAddMember}
+    >
+      + Add
+    </div>
+  ))}
+</div>
+
 
           <button className={styles.activityBtn}>See tank activity</button>
         </div>
@@ -162,20 +192,26 @@ export default function Sharetank() {
 
           <div className={styles.divider} />
 
-          <div className={styles.settingsRow}>
-            <img
-            src="/image/icons/zicons/credit.svg"
-            alt="credit card"
-            className={styles.settingsIcon}
-            />
-            <div>
-              <div className={styles.settingsTitlepay}>Pay by plate</div>
-              <div className={styles.settingsPay}>
-                Link licence plate to a payment method.
-              </div>
-            </div>
-            <span className={styles.chevron}>›</span>
-          </div>
+          <div
+  className={styles.settingsRow}
+  onClick={() => navigate("/mobile/add-vehicle")}   // <--- IMPORTANT
+>
+  <img
+    src="/image/icons/zicons/credit.svg"
+    alt="credit card"
+    className={styles.settingsIcon}
+  />
+
+  <div>
+    <div className={styles.settingsTitlepay}>Pay by plate</div>
+    <div className={styles.settingsPay}>
+      Link licence plate to a payment method.
+    </div>
+  </div>
+
+  <span className={styles.chevron}>›</span>
+</div>
+
         </div>
 
         <div className={styles.bottomHandle}>
@@ -190,16 +226,7 @@ export default function Sharetank() {
     className={styles.bottomX}
   />
 </div>
-
-
-   
-
-  
-
-  
-  
-
-      </div>
+       </div>
     </div>
   );
 }

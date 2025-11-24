@@ -172,6 +172,7 @@ export default function MobileApp() {
           <Route path="scan" element={<ScanQRCode />} />
           <Route path="sharetank" element={<Sharetank />} />
           <Route path="howitworks" element={<HowItWorksPage />} />
+          <Route path="add-vehicle" element={<AddVehicle />} />
 
           {/* Signup */}
           <Route path="signup1" element={<SignUp1 />} />
