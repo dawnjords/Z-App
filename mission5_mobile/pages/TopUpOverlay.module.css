@@ -6,27 +6,30 @@
   background: #f5f5f7;
 }
 
+/* CARD */
 .topupCard {
   width: 90%;
   max-width: 360px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  padding: 24px;
-  position: relative;
+
+  /* UPDATED TO MATCH FIGMA */
+  background: #ffffff;
+  border-radius: 3px;
+  padding: 20px;
 }
 
+/* HEADER */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
 }
 
-.header h3 {
-  font-size: 18px;
+.title {
+  font-family: Roboto;
   font-weight: 600;
-  color: #222;
+  font-size: 16px;
+  letter-spacing: -2%;
+  color: #1e196b;
 }
 
 .closeBtn {
@@ -37,57 +40,85 @@
   color: #888;
 }
 
+/* SECTIONS */
 .section {
-  margin: 20px 0;
+  margin-top: 16px;
 }
 
-.label {
-  font-size: 14px;
-  color: #555;
+.labelSmall {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1e196b;
+  margin-right: 70%;
   margin-bottom: 6px;
 }
 
+.labelLarge {
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1e196b;
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+/* CARD BOX */
 .cardBox {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fafafa;
-  border: 1px solid #eee;
-  border-radius: 10px;
+  background: #ffffff;
+  border-radius: 3px;
+  box-shadow: 2px 2px 4px rgba(243, 111, 33, 0.1);
   padding: 10px 12px;
+  border-radius: 10px;
+}
+
+.cardNumber {
+  font-family: Roboto;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1a1a1a;
 }
 
 .cardIcon {
   width: 36px;
 }
 
+/* AMOUNT VALUE */
 .amount {
-  font-size: 32px;
+  font-family: Roboto;
+  font-size: 50px;
   font-weight: 600;
-  color: #1e1e1e;
+  color: #1e196b;
   text-align: center;
-  margin: 10px 0;
+  margin: 12px 0 8px 0;
 }
 
+/* SLIDER */
 .slider {
   width: 100%;
-  margin: 8px 0;
-  accent-color: #351f9d; /* dark purple */
+  accent-color: #3129ab;
 }
 
+/* BUTTON */
 .topupBtn {
-  width: 100%;
-  background: #351f9d;
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  padding: 14px 0;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  margin-top: 15px;
-}
+  width: 84px; /* exact from Figma */
+  height: 26px;
+  display: block;
+  margin: 20px auto 0 auto;
 
-.topupBtn:hover {
-  background: #2a187a;
+  background: linear-gradient(90deg, #3129ab 0%, #1e196b 78%);
+  color: white;
+
+  border: none;
+  border-radius: 8px;
+
+  font-family: Roboto;
+  font-weight: 600;
+  font-size: 12px;
+
+  cursor: pointer;
+  text-align: center;
 }
