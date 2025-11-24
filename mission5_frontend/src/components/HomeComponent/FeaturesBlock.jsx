@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./FeaturesBlock.module.css";
 
 export default function FeatureBlock({
@@ -5,6 +6,7 @@ export default function FeatureBlock({
   kicker,
   body,
   ctaLabel,
+  ctaHref,
   imageSrc,
   imageAlt = "",
   reverse = false,
@@ -19,7 +21,11 @@ export default function FeatureBlock({
         {kicker && <p className={styles.kicker}>{kicker}</p>}
         <h2 className={styles.h2}>{title}</h2>
         {body && <p className={styles.body}>{body}</p>}
-        {ctaLabel && <a className={styles.button}>{ctaLabel}</a>}
+        {ctaLabel && (
+          <Link to={ctaHref} className={styles.button}>
+            {ctaLabel}
+          </Link>
+        )}
       </div>
     </section>
   );
