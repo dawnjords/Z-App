@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom"; // added import
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import zLogo from "/image/logo.png";
 
@@ -7,7 +7,7 @@ function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.left}>
-        {/* logo now routes home */}
+        {/* Logo links to home */}
         <Link to="/">
           <img src={zLogo} alt="Z Energy logo" className={styles.logo} />
         </Link>
@@ -19,18 +19,27 @@ function Header() {
         <ul>
           <li>Z App</li>
           <li>About Z</li>
+
           <li>
             <button>
               <img src="/image/icons/shoppingCart.png" alt="shoppingIcon" />
             </button>
           </li>
+
           <li>
             <button>
               <img src="/image/icons/searchIcon.png" alt="searchIcon" />
             </button>
           </li>
+
           <li>
-            <button className={styles.loginBtn}>Login ▸</button>
+            {/* FIXED login button */}
+            <button className={styles.loginBtn}>
+              <img
+                src="/image/icons/more/login button.png"
+                alt="Login button"
+              />
+            </button>
           </li>
         </ul>
       </nav>
