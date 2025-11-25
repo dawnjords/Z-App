@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./FeaturesBlock.module.css";
 
-export default function FeatureBlock({
+export default function FeaturesBlock({
   title,
   kicker,
   body,
