@@ -35,6 +35,9 @@ import TopUpOverlay from "./pages/TopUpOverlay";
 import VegetarianFoodPage from "./pages/VegetarianFoodPage";
 import HowItWorksPage from "./pages/HowItWorksPage";
 import PaymentLoading from "./pages/PaymentLoading";
+import GingerbreadLatte from "./pages/GingerbreadLatte";
+
+
 
 /* MOBILE FOOTER */
 function MobileFooter() {
@@ -79,7 +82,7 @@ export default function MobileApp() {
 
   const hiddenFooterRoutes = [
     "/mobile",
-   
+   "/mobile/onboarding1",
     "/mobile/onboarding2",
     "/mobile/onboarding3",
     "/mobile/onboarding4",
@@ -112,11 +115,13 @@ export default function MobileApp() {
             element={<Navigate to="/mobile/onboarding1" replace />}
           />
 
-          {/* ONBOARDING */}
-         
-          <Route path="onboarding2" element={<Onboarding2 />} />
-          <Route path="onboarding3" element={<Onboarding3 />} />
-          <Route path="onboarding4" element={<Onboarding4 />} />
+          
+         {/* ONBOARDING */}
+         <Route path="onboarding1" element={<Onboarding1 />} />
+         <Route path="onboarding2" element={<Onboarding2 />} />
+         <Route path="onboarding3" element={<Onboarding3 />} />
+         <Route path="onboarding4" element={<Onboarding4 />} />
+
 
           {/* MAIN */}
           <Route path="home" element={<HomePage />} />
@@ -126,6 +131,7 @@ export default function MobileApp() {
           <Route path="cold-drink/:id" element={<ColdDrinkDetails />} />
           <Route path="hot-drinks" element={<HotDrinksPage />} />
           <Route path="hot-drink/:id" element={<HotDrinkDetails />} />
+          <Route path="gingerbread-latte" element={<GingerbreadLatte/>}/>
           <Route path="order-food-home" element={<OrderFoodHome />} />
 
           {/* MAPS */}

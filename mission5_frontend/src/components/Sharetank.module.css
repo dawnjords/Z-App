@@ -139,7 +139,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 0; /* remove the gap above */
+  margin-top: 0; 
 }
 .bannerInner {
   display: flex;

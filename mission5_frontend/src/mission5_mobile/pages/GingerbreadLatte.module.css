@@ -1,0 +1,342 @@
+.screen {
+  background: #f7f7f7;
+  min-height: 100vh;
+  padding: 8px 16px 24px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---- STATUS BAR ---- */
+.statusBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2px 4px 6px;
+  font-size: 12px;
+  color: #333;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two equal columns */
+  column-gap: 40px;               /* pushes right column further right */
+  row-gap: 10px;
+  justify-items: left; 
+          
+}
+
+
+.time {
+  font-weight: 600;
+}
+
+.statusIcons {
+  display: flex;
+  gap: 4px;
+}
+
+.statusIcon {
+  
+  height: 30px;
+}
+
+/* ---- TOP BAR ---- */
+.topBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.backBtn {
+  border: none;
+  background: transparent;
+  font-size: 20px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.stationPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  border: none;
+  padding: 4px 10px;
+  background: #ff8000;
+  color: #fff;
+  font-size: 12px;
+}
+
+.stationLocation {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;   
+  padding: 0;
+  cursor: pointer;
+}
+
+.stationIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.stationText {
+  font-size: 14px;
+  font-weight: 600;
+  color: #362F8A;  
+}
+
+.topRightIcons {
+  display: flex;
+  gap: 8px;
+}
+
+.iconBtn {
+  border: none;
+  background: transparent;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.iconBtn img {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---- DRINK CARD ---- */
+.drinkCard {
+  background: #ececf3;
+  
+  overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+  margin-bottom: 16px;
+ padding: 16px;
+}
+
+.drinkHeaderRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.drinkHeaderImg {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+}
+
+.drinkImageWrap {
+  display: flex;
+  justify-content: center;
+  padding: 14px 0 4px;
+  background: #fff;
+}
+
+.drinkImage {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.drinkHeaderText{
+    flex:1;
+    text-align: left;
+}
+
+.drinkText {
+  padding: 8px 12px 14px;
+  text-align: left;
+}
+
+.drinkTitle {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 6px;
+}
+
+.drinkDesc {
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
+  color: #444;
+}
+
+.drinkBody {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #555;
+}
+
+/* ---- SECTIONS ---- */
+.section {
+  margin-bottom: 16px;
+}
+
+.sectionTitle {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.subNote {
+  font-size: 11px;
+  color: #777;
+  
+}
+
+/* ---- SIZE ---- */
+.sizeRow {
+  display: flex;
+  gap: 12px;
+}
+
+.sizeCard {
+  flex: 1;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+.sizeContent {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* spacing between icon + text */
+}
+
+.textBlock {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+
+
+.sizeCardActive {
+  border-color: #ff8000;
+  box-shadow: 0 6px 14px rgba(255, 128, 0, 0.35);
+}
+
+.sizeIcon {
+  width: 22px;
+  height: 22px;
+}
+
+.largeIcon{
+    width: 26px;
+    height: 26px;
+}
+
+.sizeLabel {
+  font-size: 13px;
+  font-weight: 600;
+ 
+}
+
+.sizePrice {
+  font-size: 11px;
+  color: #555;
+}
+
+/* ---- QUANTITY ---- */
+.qtyRow {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  padding: 4px 10px;
+  gap: 12px;
+}
+
+.qtyBtn {
+  width: 24px;
+  height: 24px;
+  border-radius: 999px;
+  border: 1px solid #999;
+  background: #fff;
+  font-size: 16px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qtyValue {
+  min-width: 16px;
+  text-align: center;
+}
+
+/* ---- OPTIONS (Milk / Strength / Flavour) ---- */
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 6px;
+  column-gap: 12px;
+}
+
+.twoCol {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+ 
+}
+
+.radioOption {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-align: left;
+  font-size: 12px;
+}
+
+
+.radioOption input[type="radio"] {
+  accent-color: #7d52c5; /* purple */
+}
+
+/* ---- BUTTONS ---- */
+.actionRow {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.cancelBtn,
+.primaryBtn {
+  flex: 1;
+  padding: 10px 0;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelBtn {
+  border: 1px solid #7d52c5;
+  background: #fff;
+  color: #7d52c5;
+}
+
+.primaryBtn {
+  border: none;
+  background: #7d52c5;
+  color: #fff;
+}
+
+.bottomSpacer {
+  height: 56px; /* space above your bottom nav */
+}
