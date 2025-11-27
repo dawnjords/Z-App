@@ -1,5 +1,7 @@
 // routes/custom.js
 import express from "express";
+
+import Station from "../models/Station.js";
 import FuelPrice from "../models/FuelPrice.js";
 import QRCode from "../models/QRCode.js";
 import PopUp from "../models/PopUp.js";
@@ -15,17 +17,52 @@ router.get("/payment-page", (req, res) => {
   });
 });
 
-/* -------------------- COMPARE PRICES -------------------- */
+/* -------------------- COMPARE PRICES (WITH SEARCH FILTER) -------------------- */
 router.get("/compare-prices", async (req, res) => {
   try {
-    const prices = await FuelPrice.find().limit(20);
+    const search = req.query.search?.toLowerCase() || "";
+
+    const stations = await Station.find();
+    const prices = await FuelPrice.find();
+
+    // JOIN station + fuel prices
+    const combined = stations.map((station) => {
+      const fuels = prices
+        .filter((p) => p.stationId?.toString() === station._id.toString())
+        .map((p) => ({
+          fuelType: p.fuelType,
+          price: p.price,
+        }));
+
+      return {
+        stationName: station.name,
+        address: station.address,
+        services: station.services,
+        lat: station.lat,
+        lng: station.lng,
+        fuels,
+      };
+    });
+
+    // FILTER BASED ON SEARCH INPUT
+    const filtered = combined.filter((station) => {
+      const nameMatch = station.stationName.toLowerCase().includes(search);
+      const addressMatch = station.address.toLowerCase().includes(search);
+      const serviceMatch = station.services.some((s) =>
+        s.toLowerCase().includes(search)
+      );
+
+      return nameMatch || addressMatch || serviceMatch;
+    });
+
     res.json({
       page: "compare-prices",
-      count: prices.length,
-      prices,
+      count: filtered.length,
+      prices: filtered,
     });
   } catch (err) {
-    res.status(500).json({ error: "Failed to fetch prices" });
+    console.error("COMPARE ERROR:", err);
+    res.status(500).json({ error: "Failed to fetch joined prices" });
   }
 });
 

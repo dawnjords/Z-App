@@ -3,7 +3,6 @@ import Vehicle from "./models/Vehicle.js";
 import Sharetank from "./models/Sharetank.js";
 import PopUp from "./models/PopUp.js";
 
-// NEW MODELS (for backend)
 import FuelPrice from "./models/FuelPrice.js";
 import QRCode from "./models/QRCode.js";
 import Transactions from "./models/Transactions.js";
@@ -45,10 +44,9 @@ export default async function runSeed() {
       lat: -36.995,
       lng: 174.875,
     },
-
     {
       name: "Z Albany",
-      address: "318 Oteha Valley Road, Albany, Auckland",
+      address: "Albany, Auckland",
       phone: "09 4152332",
       services: ["fuel", "toilet", "atm", "carwash"],
       lat: -36.72716,
@@ -56,7 +54,7 @@ export default async function runSeed() {
     },
     {
       name: "Z Sylvia Park",
-      address: "286 Mount Wellington Hwy, Mt Wellington, Auckland",
+      address: "Mount Wellington, Auckland",
       phone: "09 5735669",
       services: ["fuel", "toilet", "coffee"],
       lat: -36.90721,
@@ -64,7 +62,7 @@ export default async function runSeed() {
     },
     {
       name: "Z Westgate",
-      address: "1 Fernhill Drive, Massey, Auckland",
+      address: "Massey, Auckland",
       phone: "09 8322990",
       services: ["fuel", "toilet", "atm"],
       lat: -36.81767,
@@ -72,7 +70,7 @@ export default async function runSeed() {
     },
     {
       name: "Z Greenlane",
-      address: "200 Great South Road, Greenlane, Auckland",
+      address: "Greenlane, Auckland",
       phone: "09 5241464",
       services: ["fuel", "toilet", "coffee"],
       lat: -36.88792,
@@ -80,7 +78,7 @@ export default async function runSeed() {
     },
     {
       name: "Z Manukau",
-      address: "33 Cavendish Drive, Manukau",
+      address: "Manukau, Auckland",
       phone: "09 2620848",
       services: ["fuel", "carwash", "coffee"],
       lat: -36.9923,
@@ -88,7 +86,7 @@ export default async function runSeed() {
     },
     {
       name: "Z Henderson Valley",
-      address: "124 Henderson Valley Road, Henderson",
+      address: "Henderson, Auckland",
       phone: "09 8361301",
       services: ["fuel", "toilet"],
       lat: -36.88406,
@@ -96,13 +94,35 @@ export default async function runSeed() {
     },
     {
       name: "Z Ponsonby",
-      address: "108 Franklin Road, Freemans Bay, Auckland",
+      address: "Ponsonby, Auckland",
       phone: "09 3763577",
       services: ["fuel", "coffee", "atm"],
       lat: -36.84533,
       lng: 174.73821,
     },
   ]);
+
+  console.log(" Inserting Fuel Prices for ALL stations...");
+
+  const fuelTypes = ["Z 91", "Z X95", "Z Diesel"];
+
+  const fuelPrices = stations.flatMap((station) =>
+    fuelTypes.map((type) => ({
+      stationId: station._id,
+      fuelType: type,
+      price:
+        type === "Z 91"
+          ? 2.89 + Math.random() * 0.2
+          : type === "Z X95"
+          ? 3.19 + Math.random() * 0.2
+          : 2.49 + Math.random() * 0.2,
+      lastUpdated: new Date(),
+    }))
+  );
+
+  await FuelPrice.insertMany(fuelPrices);
+
+  console.log(" Fuel prices inserted!");
 
   console.log(" Inserting vehicles...");
   await Vehicle.insertMany([
@@ -113,13 +133,6 @@ export default async function runSeed() {
       paymentMethod: "visa-1234",
       confirmOnArrival: true,
     },
-    {
-      userId: "demo-user-2",
-      plate: "XYZ987",
-      fuelType: "Z X 95",
-      paymentMethod: "mastercard-9876",
-      confirmOnArrival: false,
-    },
   ]);
 
   console.log(" Inserting Sharetank...");
@@ -128,57 +141,20 @@ export default async function runSeed() {
     ownerUserId: "demo-user-1",
     litres: 115,
     maxLitres: 225,
-    members: [
-      {
-        name: "Alex",
-        avatarUrl: "/image/icons/sharetank2/firstmember.jpg",
-      },
-      {
-        name: "Sarah",
-        avatarUrl: "/image/icons/sharetank2/secondmember.jpg",
-      },
-      {
-        name: "cutebunny",
-        avatarUrl: "/image/icons/sharetank2/cutebunny.jpg",
-      },
-    ],
+    members: [{ name: "Alex" }, { name: "Sarah" }, { name: "cutebunny" }],
   });
 
   console.log(" Inserting PopUps...");
   await PopUp.insertMany([
-    {
-      userId: "demo-user-1",
-      amount: 20,
-      date: new Date(),
-    },
-    {
-      userId: "demo-user-1",
-      amount: 40,
-      date: new Date(),
-    },
-  ]);
-
-  console.log(" Inserting Fuel Prices...");
-  await FuelPrice.insertMany([
-    {
-      stationId: stations[0]._id,
-      fuelType: "Z 91",
-      price: 2.89,
-      lastUpdated: new Date(),
-    },
-    {
-      stationId: stations[1]._id,
-      fuelType: "Z X95",
-      price: 3.19,
-      lastUpdated: new Date(),
-    },
+    { userId: "demo-user-1", amount: 20, date: new Date() },
+    { userId: "demo-user-1", amount: 40, date: new Date() },
   ]);
 
   console.log(" Inserting QR Code...");
   await QRCode.create({
     code: "ABC123XYZ",
     station: "Z Kingsway Station",
-    expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+    expires: new Date(Date.now() + 86400000),
   });
 
   console.log(" Inserting Transactions...");
@@ -188,13 +164,6 @@ export default async function runSeed() {
       litres: 20,
       pricePerLitre: 2.89,
       totalPaid: 57.8,
-      date: new Date(),
-    },
-    {
-      fuelType: "Z X95",
-      litres: 15,
-      pricePerLitre: 3.19,
-      totalPaid: 47.85,
       date: new Date(),
     },
   ]);
