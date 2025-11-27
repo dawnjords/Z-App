@@ -1,7 +1,10 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styles from "./OrderOverlay.module.css";
 
 function OrderOverlay() {
+  const navigate = useNavigate();
+
   return (
     <>
       <div className={styles.modalContainer}>
@@ -94,8 +97,21 @@ function OrderOverlay() {
         </div>
 
         <div className={styles.footer}>
-          <button className={styles.cancel}>Cancel</button>
-          <button className={styles.add}>Add to Cart</button>
+          {/* CANCEL → /landing */}
+          <button
+            className={styles.cancel}
+            onClick={() => navigate("/landing")}
+          >
+            Cancel
+          </button>
+
+          {/* ADD TO CART → /payment-page */}
+          <button
+            className={styles.add}
+            onClick={() => navigate("/payment-page")}
+          >
+            Add to Cart
+          </button>
         </div>
       </div>
     </>
