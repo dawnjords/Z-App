@@ -21,9 +21,11 @@ function Header() {
           <li>About Z</li>
 
           <li>
-            <button>
-              <img src="/image/icons/shoppingCart.png" alt="shoppingIcon" />
-            </button>
+            <Link to="/login">
+              <button>
+                <img src="/image/icons/shoppingCart.png" alt="shoppingIcon" />
+              </button>
+            </Link>
           </li>
 
           <li>
@@ -33,13 +35,15 @@ function Header() {
           </li>
 
           <li>
-            {/* FIXED login button */}
-            <button className={styles.loginBtn}>
-              <img
-                src="/image/icons/more/login button.png"
-                alt="Login button"
-              />
-            </button>
+            {/* FIXED login button with working link */}
+            <Link to="/login">
+              <button className={styles.loginBtn}>
+                <img
+                  src="/image/icons/more/login button.png"
+                  alt="Login button"
+                />
+              </button>
+            </Link>
           </li>
         </ul>
       </nav>

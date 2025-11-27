@@ -52,7 +52,7 @@ function Homepage() {
           title="Order food online"
           body="Order food and drinks via the app and pick up at the station."
           ctaLabel="Order Food"
-          ctaHref="/selection"
+          ctaHref="/landing"
           imageSrc="/image/food.png"
           imageAlt="Coffee and sandwich"
         />
