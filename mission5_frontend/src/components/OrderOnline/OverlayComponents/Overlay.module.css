@@ -1,13 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
 
+/* ===== Global Overlay Wrapper ===== */
 .overlayWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(2px);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #ececf3;
+  z-index: 9999;
 }
 
+/* ===== Default Overlay Container (Payment, Declined) ===== */
 .overlayContainer {
   font-family: "Roboto", sans-serif;
   background-color: #ffffff;
@@ -18,9 +26,9 @@
   overflow: hidden;
 }
 
-/* Overlay Sizes */
+/* Default sizes */
 .paymentOverlay,
-.confirmOverlay {
+.declinedOverlay {
   width: 530px;
   height: 735px;
 }
@@ -30,14 +38,19 @@
   height: 347px;
 }
 
-/* Header Images */
+/* Default header images */
 .overlayHeader img {
   width: 100%;
   height: auto;
   display: block;
 }
 
-/* Text Styling */
+/* Prevent old confirm header stretching */
+.confirmOverlay .overlayHeader img {
+  display: none !important;
+}
+
+/* ===== Text Styles ===== */
 .overlayText {
   color: #000000;
   line-height: 1.5;
@@ -57,7 +70,7 @@
   margin: 20px auto;
 }
 
-/* Form Fields */
+/* ===== Form Fields ===== */
 .formField {
   display: flex;
   flex-direction: column;
@@ -83,7 +96,7 @@
   color: #b1b1b1;
 }
 
-/* Buttons */
+/* ===== Buttons ===== */
 .buttonRow {
   display: flex;
   justify-content: center;
@@ -121,7 +134,7 @@
   opacity: 0.9;
 }
 
-/* Confirm / Declined Images */
+/* ===== Confirm / Declined Images ===== */
 .confirmImage,
 .declinedImage {
   display: block;
@@ -129,13 +142,88 @@
   height: 60px;
 }
 
-/* Mobile */
+/* Small animated bubble */
+.confirmAnimation {
+  width: 180px;
+  height: 180px;
+  margin: 40px auto 10px;
+  display: block;
+  object-fit: contain;
+}
+
+.confirmCard {
+  width: 360px;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: "Roboto", sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
+}
+
+/* Header strip */
+.confirmHeader {
+  background: #f7f7f7;
+  padding: 35px 16px;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerIcon {
+  float: left;
+  width: 20px;
+}
+
+.headerRightIcon {
+  width: 20px;
+  margin-left: 20px;
+  float: left;
+}
+
+.headerTitle {
+  margin-left: 20px;
+  font-weight: 600;
+  font-size: 16px;
+  float: left;
+}
+
+/* Text content */
+.confirmBody {
+  text-align: center;
+  padding: 20px 20px 10px;
+}
+
+.confirmBody h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.confirmBody p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Swoosh image */
+.confirmSwoosh {
+  display: block;
+  margin: 25px auto 0;
+  width: 120px;
+  height: auto;
+}
+
+/* ===== Mobile ===== */
 @media (max-width: 600px) {
   .paymentOverlay,
   .confirmOverlay,
   .declinedOverlay {
     width: 95%;
     height: auto;
+  }
+
+  .confirmCard {
+    width: 90%;
   }
 
   .overlayText {
