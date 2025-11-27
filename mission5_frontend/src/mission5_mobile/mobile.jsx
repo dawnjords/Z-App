@@ -56,7 +56,7 @@ function MobileFooter() {
           <span className={styles.footerLabel}>QR Code</span>
         </Link>
 
-        <Link to="/mobile/sharetank" className={styles.footerBtn}>
+        <Link to="/mobile/sharetank/id1" className={styles.footerBtn}>
           <img
             src="/image/icons/zicons/appfueltank.svg"
             className={styles.tabIconImg}
