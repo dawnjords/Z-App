@@ -31,6 +31,8 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const isMobileRoute = location.pathname.startsWith("/mobile");
+
   /* MOBILE REDIRECT HANDLER */
   useEffect(() => {
     const handleResize = () => {
@@ -55,8 +57,13 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Header1 />
+      {/* 🚫 Hide headers on mobile site */}
+      {!isMobileRoute && (
+        <>
+          <Header />
+          <Header1 />
+        </>
+      )}
 
       <Routes>
         {/* Desktop pages */}
@@ -74,15 +81,19 @@ function App() {
         <Route path="/mobile/*" element={<MobileApp />} />
       </Routes>
 
-      <Footer />
+      {/* Optional: hide footer too on mobile */}
+      {!isMobileRoute && <Footer />}
     </>
   );
 }
 
-export default function AppWrapper() {
+function AppWrapper() {
   return (
     <BrowserRouter>
       <App />
     </BrowserRouter>
   );
 }
+
+/* ✅ MUST HAVE DEFAULT EXPORT */
+export default AppWrapper;
